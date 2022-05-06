@@ -5,12 +5,15 @@
     overflow-x: scroll;
 }
 
-.resultDiv > button{
+.resultDiv > a{
     outline:none;
     border:none;
+    text-decoration: none;
+    color:black;
     background-color: inherit;
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     align-items: center;
     font-size: 2.3vw;
     transition:background 400ms ease 50ms;
