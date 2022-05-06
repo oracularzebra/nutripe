@@ -1,0 +1,21 @@
+.food {
+  display: grid;
+}
+.food > header {
+  display: flex;
+  margin-top: 4px;
+  justify-content: space-between;
+}
+.food > header > img {
+  width: 50vw;
+  min-width: 10vw;
+  max-width: 50vw;
+  height: 50vh;
+}
+.food > header > h2 {
+    
+}
+.ingredientsRequiredHeading {
+}
+.listOfIngredients {
+}
