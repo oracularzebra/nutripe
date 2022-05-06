@@ -1,0 +1,33 @@
+*{
+    margin:0;
+    padding:0;
+    font-family: sans-serif;
+}
+header{
+    background-color: rgb(147, 147, 208);
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h2{
+    font-size: 4vmax;
+}
+input{
+    position: relative;
+    padding:2vw;
+    width:24vw;
+    max-width:27vw;
+    margin-right:4px;
+    border:none;
+    outline:none;
+    cursor: pointer;
+    background-color: rgba(40, 35, 35, 0.307);
+    color:rgb(221, 214, 214);
+    font-size: 2vw;
+}
+button{
+    margin-right:5px;
+    padding:2vw;
+    border-radius: 5px;
+}

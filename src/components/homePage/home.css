@@ -1,0 +1,43 @@
+.main{
+
+    width:100%;
+    height:100%;
+
+}
+.Main{
+    margin-top: 4vh;;
+    display:grid;
+    overflow-x: scroll;
+    grid-template-rows: auto auto auto;
+    grid-template-columns: auto auto auto;
+    justify-content: baseline;
+    align-items: stretch;
+}
+.link{
+    border:none;
+    outline:none;
+    background-color: inherit;
+    cursor: pointer;
+    color:inherit;
+    text-decoration: none;
+    transition: background 400ms ease 50ms;
+}
+.link:hover{
+    background-color: rgb(175, 225, 175);
+}
+.Main div{
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+}
+.Main > div > p{
+    padding: 5px;
+    font-size: large;
+}
+
+img{    
+    float:left;
+    width: 24vw;
+    height:24vh;
+    object-fit: cover;
+}
