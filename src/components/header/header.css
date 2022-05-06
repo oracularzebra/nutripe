@@ -3,20 +3,16 @@
     padding:0;
     font-family: sans-serif;
 }
-header{
-    background-color: rgb(147, 147, 208);
+.permHeader{
+    background-color: rgb(195, 195, 241);
     display:flex;
     justify-content: space-between;
     align-items: center;
 }
 
-h2{
-    font-size: 4vmax;
-}
-input{
+.searchInput{
     position: relative;
-    padding:2vw;
-    width:24vw;
+    padding:2vh;
     max-width:27vw;
     margin-right:4px;
     border:none;
@@ -24,10 +20,15 @@ input{
     cursor: pointer;
     background-color: rgba(40, 35, 35, 0.307);
     color:rgb(221, 214, 214);
-    font-size: 2vw;
 }
-button{
+#searchButton{
     margin-right:5px;
-    padding:2vw;
+    padding:2vh;
     border-radius: 5px;
+    box-shadow: none;
+    box-sizing: none;
+    border-style: none;
+}
+#searchButton:hover{
+    background-color: rgb(147, 227, 147);
 }

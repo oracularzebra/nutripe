@@ -6,11 +6,12 @@ const Header = ({ handleSubmit, value, setValue }) => {
 
   return (
     <div>
-      <header>
+      <header className="permHeader">
         <h2>Eat Healthy</h2>
         <form onSubmit={handleSubmit}>
           <label>
             <input
+              className="searchInput"
               required
               value={value}
               onChange={(e)=>setValue(e.target.value)}
@@ -18,7 +19,7 @@ const Header = ({ handleSubmit, value, setValue }) => {
               type="text"
               placeholder="Enter the food item"
             />
-            <button onClick={() => ref.current.focus()} type="submit">
+            <button id="searchButton" onClick={() => ref.current.focus()} type="submit">
               Search
             </button>
           </label>
