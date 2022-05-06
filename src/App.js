@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router";
 import { Routes, Route } from "react-router";
 import Result from './components/searchResult/Result'
-import Item from './components/Food/food';
+import Item from './components/food/food';
 import Main from "./components/homePage/home";
 
 function App() {
