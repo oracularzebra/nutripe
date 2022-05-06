@@ -7,11 +7,12 @@ const Item = ({ item }) => {
 
   return (
     <div className="food">
-      <header>
+      <header className="header">
         <img id="foodImage" src={item.image} />
         <h2 id="foodTitle">{item.title}</h2>
       </header>
       <h4>{item.servings}</h4>
+      <br />
       <h3 id="ingredientsRequiredHeading">Ingredients Required</h3>
       <ol id="listOfIngredients">{item.ingredients}</ol>
       <span>{item.instructions}</span>
