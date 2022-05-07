@@ -17,8 +17,8 @@ const Item = ({ item }) => {
         <h4>{item.servings}</h4>
         <h3 id="ingredientsRequiredHeading">Ingredients Required</h3>
         <ul id="listOfIngredients">
-          {item.ingredients.split("|").map((instruction, index) => (
-            <li key={index}>{instruction}</li>
+          {item.ingredients.split("|").map((ingredient, index) => (
+            <li key={index}>{ingredient}</li>
           ))}
         </ul>
         <h3>Instructions</h3>
