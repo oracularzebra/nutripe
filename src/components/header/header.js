@@ -14,12 +14,16 @@ const Header = ({ handleSubmit, value, setValue }) => {
               className="searchInput"
               required
               value={value}
-              onChange={(e)=>setValue(e.target.value)}
+              onChange={(e) => setValue(e.target.value)}
               ref={ref}
               type="text"
               placeholder="Enter the food item"
             />
-            <button id="searchButton" onClick={() => ref.current.focus()} type="submit">
+            <button
+              id="searchButton"
+              onClick={() => ref.current.focus()}
+              type="submit"
+            >
               Search
             </button>
           </label>
