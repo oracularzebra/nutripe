@@ -1,16 +1,19 @@
 .food {
+  height:100vh;
   display: grid;
+  grid-template-columns: auto auto;
   background: linear-gradient(180deg ,rgba(215, 188, 79, 0.2) ,rgba(42, 59, 211, 0.4));
+  overflow-y: scroll;
 }
-.food > .header {
-  display: flex;
-  margin-top: 2vw;
-  justify-content: space-between;
-  background: linear-gradient(100deg, rgba(4,4,3,.3), rgba(4,4,4,.3));
+.food > h2{
+  align-self:center;
 }
-.food > header > img {
-  width: 50vw;
-  min-width: 10vw;
-  max-width: 50vw;
-  height: 50vh;
+.food > div{
+  grid-column: span 2;
+}
+.food > img{
+  width:50vw;
+  max-width: fit-content;
+  height:50vh;
+  background-size: contain;
 }

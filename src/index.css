@@ -1,11 +1,15 @@
 *{
   margin:0;
   padding:0;
+  box-sizing: border-box;
+  /* overflow-y: hidden; */
 }
 
 .App{
   display: flex;
+  width: auto;
   flex-direction: column;
-  min-height:100vh;
+  height: 100vh;
+  overflow-y: hidden;
   justify-content: space-between;
 }

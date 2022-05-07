@@ -58,7 +58,7 @@ const Result = ({ setItem }) => {
             <Link to={`/item/${index}`} 
               key={index}
               onClick={()=>{
-                const newItem = {...item, image:photos[index].photos[0].src.large2x}
+                const newItem = {...item, image:photos[index].photos[0].src.large}
                 setItem(newItem);
               }}
               >

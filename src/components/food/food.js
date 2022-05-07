@@ -7,15 +7,16 @@ const Item = ({ item }) => {
 
   return (
     <div className="food">
-      <header className="header">
         <img id="foodImage" src={item.image} />
         <h2 id="foodTitle">{item.title}</h2>
-      </header>
-      <h4>{item.servings}</h4>
+        <div>
+          <br />
+          <h4>{item.servings}</h4>
+          <h3 id="ingredientsRequiredHeading">Ingredients Required</h3>
+          <ol id="listOfIngredients">{item.ingredients}</ol>
+          <span>{item.instructions}</span>
+        </div>
       <br />
-      <h3 id="ingredientsRequiredHeading">Ingredients Required</h3>
-      <ol id="listOfIngredients">{item.ingredients}</ol>
-      <span>{item.instructions}</span>
     </div>
   );
 };
