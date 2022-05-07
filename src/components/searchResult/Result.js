@@ -2,25 +2,26 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import getRecipes from "../../apiRequest/getRecipes";
 import "./Result.css";
-import { useNavigate } from "react-router";
 import getPhoto from "../../apiRequest/getPhoto";
 import { Link } from "react-router-dom";
 
+
 const Result = ({ setItem }) => {
+
   const [recipe, setRecipe] = useState({});
-  const [err, setErr] = useState(false);
   const { name } = useParams();
-  const [isLoading, setIsLoading] = useState(true);
+  const [recipeLoaded, setRecipeLoaded] = useState(false);
   const [imagesLoaded, setImagesLoaded] = useState(false);
   const [photos, setPhotos] = useState([]);
 
   useEffect(() => {
+
     const getRecipeData = async () => {
-      setIsLoading(true);
       try {
         await getRecipes(name).then(async (data) => {
           setRecipe(data);
           console.log(data);
+          setRecipeLoaded(true);
           const PromiseToGetImage = (query) => {
             return getPhoto(query);
           };
@@ -31,18 +32,20 @@ const Result = ({ setItem }) => {
           Promise.all(promises)
             .then((imageData) => {
               console.log(imageData);
-              setPhotos(imageData);
-              setImagesLoaded(true);
+              if(imageData[0].error.length){
+                setImagesLoaded(false);
+              }else{
+                setPhotos(imageData);
+                setImagesLoaded(true);
+              }
             })
             .catch(() => {
-              setImagesLoaded(false);
+              imagesLoaded(false);
             });
         });
       } catch (err) {
-        setErr(true);
+        
         console.log(err);
-      } finally {
-        setIsLoading(false);
       }
     };
     getRecipeData();
@@ -50,22 +53,25 @@ const Result = ({ setItem }) => {
 
   return (
     <div className="resultDiv">
-      {!isLoading &&
-        imagesLoaded &&
-        !err &&
+      {recipeLoaded &&
         recipe.map((item, index) => {
           return (
-            <Link to={`/item/${index}`} 
+            <Link to={`/${name}/${index}`} 
               key={index}
               onClick={()=>{
-                const newItem = {...item, image:photos[index].photos[0].src.large}
-                setItem(newItem);
+                if(imagesLoaded){
+                  const newItem = {...item, image:photos[index].photos[0].src.large}
+                  setItem(newItem);
+                }
+                else{
+                  setItem(item);
+                }
               }}
               >
-              <img
+              {imagesLoaded && <img
                 src={photos[index].photos[0].src.large}
                 alt={photos[index].photos.alt}
-              />
+              />}
               {item.title}
             </Link>
           );

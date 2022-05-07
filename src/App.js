@@ -26,9 +26,9 @@ function App() {
        <Routes>
          <Route path="/" element={<Main isLoading={isLoading} setIsLoading={setIsLoading}></Main>}>
          </Route>
-         <Route path="/search/:name" element={<Result setItem={setItem}/>}>
+         <Route path="/search/:name" element={<Result searchQuery={value} setItem={setItem}/>}>
          </Route>
-         <Route path="/item/:id" element={<Item item={item}/>}/>
+         <Route path="/:name/:id" element={<Item item={item}/>}/>
          <Route path='*'>   
          </Route>
        </Routes>

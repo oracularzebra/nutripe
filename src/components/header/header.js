@@ -7,7 +7,7 @@ const Header = ({ handleSubmit, value, setValue }) => {
   return (
     <div>
       <header className="permHeader">
-        <h2>Eat Healthy</h2>
+        <h2>Nutripe</h2>
         <form onSubmit={handleSubmit}>
           <label>
             <input

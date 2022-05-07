@@ -2,12 +2,14 @@ import { useParams } from "react-router";
 import "./food.css";
 
 const Item = ({ item }) => {
-  const { id } = useParams();
+
+  const { name ,id } = useParams();
+
   console.log(item);
 
   return (
     <div className="food">
-        <img id="foodImage" src={item.image} />
+        {item.image && <img id="foodImage" src={item.image} />}
         <h2 id="foodTitle">{item.title}</h2>
         <div>
           <br />
