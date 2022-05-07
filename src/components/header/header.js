@@ -18,8 +18,7 @@ const Header = ({ handleSubmit, value, setValue }) => {
               ref={ref}
               type="text"
               placeholder="Enter the food item"
-            />import { useNavigate } from "react-router";
-
+            />
             <button id="searchButton" onClick={() => ref.current.focus()} type="submit">
               Search
             </button>

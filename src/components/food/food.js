@@ -17,7 +17,7 @@ const Item = ({ item }) => {
           <br />
           <h4>{item.servings}</h4>
           <h3 id="ingredientsRequiredHeading">Ingredients Required</h3>
-          <ol id="listOfIngredients">{item.ingredients}</ol>
+          <ol id="listOfIngredients">{item.ingredients.map((instruction, index)=> <li key={index}>{instruction}</li> )}</ol>
           <span>{item.instructions}</span>
         </div>
       <br />
