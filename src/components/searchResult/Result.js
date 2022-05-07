@@ -5,9 +5,7 @@ import "./Result.css";
 import getPhoto from "../../apiRequest/getPhoto";
 import { Link } from "react-router-dom";
 
-
 const Result = ({ setItem }) => {
-
   const [recipe, setRecipe] = useState({});
   const { name } = useParams();
   const [recipeLoaded, setRecipeLoaded] = useState(false);
@@ -15,7 +13,6 @@ const Result = ({ setItem }) => {
   const [photos, setPhotos] = useState([]);
 
   useEffect(() => {
-
     const getRecipeData = async () => {
       try {
         await getRecipes(name).then(async (data) => {
@@ -32,9 +29,9 @@ const Result = ({ setItem }) => {
           Promise.all(promises)
             .then((imageData) => {
               console.log(imageData);
-              if(imageData[0].error.length){
+              if (imageData[0].error.length) {
                 setImagesLoaded(false);
-              }else{
+              } else {
                 setPhotos(imageData);
                 setImagesLoaded(true);
               }
@@ -44,7 +41,6 @@ const Result = ({ setItem }) => {
             });
         });
       } catch (err) {
-        
         console.log(err);
       }
     };
@@ -56,22 +52,27 @@ const Result = ({ setItem }) => {
       {recipeLoaded &&
         recipe.map((item, index) => {
           return (
-            <Link to={`/${name}/${index}`} 
+            <Link
+              to={`/${name}/${index}`}
               key={index}
-              onClick={()=>{
-                if(imagesLoaded){
-                  const newItem = {...item, image:photos[index].photos[0].src.large}
+              onClick={() => {
+                if (imagesLoaded) {
+                  const newItem = {
+                    ...item,
+                    image: photos[index].photos[0].src.large,
+                  };
                   setItem(newItem);
-                }
-                else{
+                } else {
                   setItem(item);
                 }
               }}
-              >
-              {imagesLoaded && <img
-                src={photos[index].photos[0].src.large}
-                alt={photos[index].photos.alt}
-              />}
+            >
+              {imagesLoaded && (
+                <img
+                  src={photos[index].photos[0].src.large}
+                  alt={photos[index].photos.alt}
+                />
+              )}
               {item.title}
             </Link>
           );

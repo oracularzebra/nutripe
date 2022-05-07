@@ -5,6 +5,8 @@ const Item = ({ item }) => {
 
   const { name ,id } = useParams();
 
+  //Now we want to have the ingredients and the insturctions in a list.
+
   console.log(item);
 
   return (
