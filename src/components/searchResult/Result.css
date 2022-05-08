@@ -2,8 +2,8 @@
   display: grid;
   height: 100vh;
   grid-template-columns: auto auto auto;
-  justify-content: space-between;
-  align-content: space-between;
+  justify-content: space-around;
+  align-content: space-around;
   gap: 40px;
   overflow-y: scroll;
 }

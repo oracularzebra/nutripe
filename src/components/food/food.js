@@ -6,8 +6,7 @@ import "./food.css";
 const Item = ({ item }) => {
   const { name, id } = useParams();
   const ingredientList = item.ingredients.split("|");
-  const [nutrientsLoaded, setNutrientsLoaded] = useState(false);
-  const [properties, setProperties] = useState({
+  const [nutrientsObj, setNutrientsObj] = useState({
     sugar_g: 0,
     fiber_g: 0,
     serving_size_g: 0,
@@ -26,42 +25,33 @@ const Item = ({ item }) => {
       return getNutri(ingredientList[index]);
     });
     Promise.all(promises).then((list) => {
+      let tempNutrient = Object.create(nutrientsObj);
       list.map((item) => {
         const values = Object.values(item);
         const nutrients = values[0][0];
         console.log(nutrients);
         try {
-          const {
-            sugar_g,
-            fiber_g,
-            serving_size_g,
-            sodium_mg,
-            potassium_mg,
-            fat_saturated_g,
-            fat_total_g,
-            calories,
-            cholesterol_mg,
-            protein_g,
-            carbohydrates_total_g,
-          } = nutrients;
-          setProperties({
-            sugar_g: sugar_g + properties.sugar_g,
-            fiber_g: fiber_g + properties.fiber_g,
-            serving_size_g: serving_size_g + properties.serving_size_g,
-            sodium_mg: sodium_mg + properties.sodium_mg,
-            potassium_mg: potassium_mg + properties.potassium_mg,
-            fat_saturated_g: fat_saturated_g + properties.fat_saturated_g,
-            fat_total_g: fat_total_g + properties.fat_total_g,
-            calories: calories + properties.calories,
-            cholesterol_mg: cholesterol_mg + properties.cholesterol_mg,
-            protein_g: protein_g + properties.protein_g,
+          tempNutrient = {
+            sugar_g: nutrients.sugar_g + tempNutrient.sugar_g,
+            fiber_g: nutrients.fiber_g + tempNutrient.fiber_g,
+            serving_size_g:
+              nutrients.serving_size_g + tempNutrient.serving_size_g,
+            sodium_mg: nutrients.sodium_mg + tempNutrient.sodium_mg,
+            potassium_mg: nutrients.potassium_mg + tempNutrient.potassium_mg,
+            fat_saturated_g:
+              nutrients.fat_saturated_g + tempNutrient.fat_saturated_g,
+            fat_total_g: nutrients.fat_total_g + tempNutrient.fat_total_g,
+            calories: nutrients.calories + tempNutrient.calories,
+            cholesterol_mg:
+              nutrients.cholesterol_mg + tempNutrient.cholesterol_mg,
+            protein_g: nutrients.protein_g + tempNutrient.protein_g,
             carbohydrates_total_g:
-              carbohydrates_total_g + properties.carbohydrates_total_g,
-          });
-        } catch (err) {
-          console.log(err);
-        }
+              nutrients.carbohydrates_total_g +
+              tempNutrient.carbohydrates_total_g,
+          };
+        } catch (err) {}
       });
+      setNutrientsObj(tempNutrient);
     });
   }, []);
 
@@ -70,13 +60,13 @@ const Item = ({ item }) => {
       {item.image && <img id="foodImage" src={item.image} />}
       <h2 id="foodTitle">{item.title}</h2>
       <div>
-          <h3>Nutrient Facts</h3>
-          {
-            Object.entries(properties).map((item, index) => {
-              return <li key={index}>{`${item[0]}=${item[1]}`}</li>
-            })
-          }
-        </div>
+        <h3>Nutrient Facts</h3>
+        <ol>
+          {Object.entries(nutrientsObj).map((item, index) => {
+            return <li key={index}>{`${item[0]}=${item[1]}`}</li>;
+          })}
+        </ol>
+      </div>
       <div>
         <br />
         <h4>{item.servings}</h4>
@@ -89,7 +79,7 @@ const Item = ({ item }) => {
           ))}
         </ul>
         <h3>Instructions</h3>
-        <span>{item.instructions}</span>    
+        <span>{item.instructions}</span>
       </div>
       <br />
     </div>
