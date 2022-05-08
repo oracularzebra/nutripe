@@ -37,7 +37,7 @@ const Result = ({ setItem }) => {
               }
             })
             .catch(() => {
-              imagesLoaded(false);
+              setImagesLoaded(false);
             });
         });
       } catch (err) {
