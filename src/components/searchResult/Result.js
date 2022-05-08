@@ -50,8 +50,7 @@ const Result = ({ setItem }) => {
 
   return (
     <div className="resultDiv">
-      {console.log(imagesLoaded)}
-      {recipeLoaded &&
+      {recipeLoaded ? (
         recipe.map((item, index) => {
           return (
             <Link
@@ -59,14 +58,12 @@ const Result = ({ setItem }) => {
               key={index}
               onClick={() => {
                 if (imagesLoaded) {
-                  console.log(imagesLoaded);
                   const newItem = {
                     ...item,
                     image: photos[index].photos[0].src.large,
                   };
                   setItem(newItem);
                 } else {
-                  console.log(imagesLoaded);
                   setItem(item);
                 }
               }}
@@ -80,7 +77,10 @@ const Result = ({ setItem }) => {
               {item.title}
             </Link>
           );
-        })}
+        })
+      ) : (
+        <p>Loading...</p>
+      )}
     </div>
   );
 };
