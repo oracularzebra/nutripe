@@ -15,6 +15,7 @@ const Result = ({ setItem }) => {
   useEffect(() => {
     const getRecipeData = async () => {
       try {
+        setRecipeLoaded(false);
         await getRecipes(name).then(async (data) => {
           setRecipe(data);
           console.log(data);
@@ -28,13 +29,8 @@ const Result = ({ setItem }) => {
           });
           Promise.all(promises)
             .then((imageData) => {
-              console.log(imageData);
-              if (imageData[0].error.length) {
-                setImagesLoaded(false);
-              } else {
                 setPhotos(imageData);
                 setImagesLoaded(true);
-              }
             })
             .catch(() => {
               setImagesLoaded(false);
@@ -49,6 +45,7 @@ const Result = ({ setItem }) => {
 
   return (
     <div className="resultDiv">
+      {console.log(imagesLoaded)}
       {recipeLoaded &&
         recipe.map((item, index) => {
           return (
@@ -57,12 +54,14 @@ const Result = ({ setItem }) => {
               key={index}
               onClick={() => {
                 if (imagesLoaded) {
+                  console.log(imagesLoaded)  
                   const newItem = {
                     ...item,
                     image: photos[index].photos[0].src.large,
                   };
                   setItem(newItem);
                 } else {
+                  console.log(imagesLoaded);
                   setItem(item);
                 }
               }}

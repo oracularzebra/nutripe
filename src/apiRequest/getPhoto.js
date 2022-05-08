@@ -1,5 +1,3 @@
-import axios from "axios";
-
 async function getPhoto(query){
 
     const data=await fetch(`https://api.pexels.com/v1/search?query=${query}&page=1&per_page=1`, 
