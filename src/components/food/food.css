@@ -8,7 +8,7 @@
     rgba(42, 59, 211, 0.4)
   );
   overflow-y: scroll;
-}
+ }
 .food > h2 {
   align-self: center;
 }
@@ -20,4 +20,8 @@
   max-width: fit-content;
   height: 50vh;
   background-size: contain;
+}
+#listOfIngredients{
+  word-wrap: break-word;  
+  flex-wrap: wrap;
 }

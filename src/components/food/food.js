@@ -5,19 +5,40 @@ import "./food.css";
 
 const Item = ({ item }) => {
   const { name, id } = useParams();
-  const [nutritions, setNutritions] = useState([]);
-
   const ingredientList = item.ingredients.split("|");
+  const [properties, setProperties] = useState({
+    sugar_g: 0,
+    fiber_g: 0,
+    serving_size_g: 0,
+    sodium_mg: 0,
+    name: '',
+    potassium_mg: 0,
+    fat_saturated_g: 0,
+    fat_total_g: 0,
+    calories: 0,
+    cholesterol_mg: 0,
+    protein_g: 0,
+    carbohydrates_total_g: 0,
+  });
+
   useEffect(() => {
     const promises = Array.from({ length: 10 }).map((_, index) => {
       return getNutri(ingredientList[index]);
     });
-    Promise.all(promises).then((list) => 
-      setNutritions(list)
-    );
-  }, []);
+    Promise.all(promises).then((list) => {
+      list.map((item) => {
+        const values = Object.values(item);
+        const nutrients = values[0][0];
+        console.log(nutrients);
+        try{
 
-  console.log(item);
+        }catch(err){
+
+        }
+        console.log(properties);
+      });
+    });
+  }, []);
 
   return (
     <div className="food">
@@ -36,7 +57,6 @@ const Item = ({ item }) => {
         </ul>
         <h3>Instructions</h3>
         <span>{item.instructions}</span>
-        {console.log(nutritions)}
       </div>
       <br />
     </div>

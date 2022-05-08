@@ -28,10 +28,14 @@ const Result = ({ setItem }) => {
             return PromiseToGetImage(data[i].title);
           });
           Promise.all(promises)
-            .then((imageData) => {              // }
-
+            .then((imageData) => {
+              console.log(imageData);
+              if (imageData[0].error === "Rate limit exceeded") {
+                setImagesLoaded(false);
+              } else {
                 setPhotos(imageData);
                 setImagesLoaded(true);
+              }
             })
             .catch(() => {
               setImagesLoaded(false);
@@ -55,7 +59,7 @@ const Result = ({ setItem }) => {
               key={index}
               onClick={() => {
                 if (imagesLoaded) {
-                  console.log(imagesLoaded)  
+                  console.log(imagesLoaded);
                   const newItem = {
                     ...item,
                     image: photos[index].photos[0].src.large,
