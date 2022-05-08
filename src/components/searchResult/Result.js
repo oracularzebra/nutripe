@@ -28,7 +28,8 @@ const Result = ({ setItem }) => {
             return PromiseToGetImage(data[i].title);
           });
           Promise.all(promises)
-            .then((imageData) => {
+            .then((imageData) => {              // }
+
                 setPhotos(imageData);
                 setImagesLoaded(true);
             })

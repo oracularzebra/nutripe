@@ -1,6 +1,5 @@
 import axios from "axios";
 
-//It will take an array of items and gives the nutritions present.
 const getNutri = async (query) => {
 
   const options = {
