@@ -3,7 +3,7 @@
   height: 100vh;
   grid-template-columns: auto auto auto;
   justify-content: space-around;
-  align-content: space-around;
+  align-content: stretch;
   gap: 40px;
   overflow-y: scroll;
 }
