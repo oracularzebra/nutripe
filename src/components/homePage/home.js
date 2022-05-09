@@ -6,7 +6,7 @@ const Main = ({ isLoading, setIsLoading }) => {
   
   return (
     <div>
-      Search for the food item you want to see the recipe of.
+      <h1>Search for the food item you want to see the recipe of.</h1>
     </div>
   );
 };
