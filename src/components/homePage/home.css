@@ -24,9 +24,10 @@
   border: 1px solid whitesmoke;
   border-radius: 10px;
   margin: 4px;
-  box-shadow: 4px;
+  box-shadow: 2px 2px 2px grey;
   color: black;
   outline: none;
+
 }
 #favouritesButton {
   background: linear-gradient(150deg, rgb(233, 159, 22), rgb(220, 220, 168));
