@@ -25,14 +25,27 @@
   border-radius: 10px;
   margin: 4px;
   box-shadow: 4px;
+  color: black;
   outline: none;
 }
 #favouritesButton {
   background: linear-gradient(150deg, rgb(233, 159, 22), rgb(220, 220, 168));
 }
-#likedButton{
-    background: linear-gradient(150deg, violet, rgb(233, 233, 154) 5%, rgb(213, 94, 94), rgb(223, 223, 154) 5%, violet);
+#likedButton {
+  background: linear-gradient(
+    150deg,
+    violet,
+    rgb(233, 233, 154) 5%,
+    rgb(213, 94, 94),
+    rgb(223, 223, 154) 5%,
+    violet
+  );
 }
-#watchLaterButton{
-    background: linear-gradient(150deg, rgb(116, 116, 222), rgb(228, 191, 123), pink);
+#watchLaterButton {
+  background: linear-gradient(
+    150deg,
+    rgb(116, 116, 222),
+    rgb(228, 191, 123),
+    pink
+  );
 }

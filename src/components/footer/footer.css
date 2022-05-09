@@ -12,6 +12,5 @@
   padding: 5px;
   width: 100vw;
   background-color: rgba(236, 39, 236, 0.242);
-  justify-self: flex-end;
-  position: absolute;
+  position: relative;
 }
