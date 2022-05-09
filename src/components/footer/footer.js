@@ -3,8 +3,8 @@ import './footer.css'
 const Footer = ()=>{
 
     return (
-        <div>
-            <footer>
+        <div className='footerDiv'>
+            <footer className='footer'>
                 Made with 💜 by Kartikey
             </footer>
         </div>

@@ -29,7 +29,7 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={<Main isLoading={isLoading} setIsLoading={setIsLoading} />}
+          element={<Main/>}
         ></Route>
         <Route
           path="/search/:name"

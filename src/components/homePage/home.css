@@ -1,0 +1,38 @@
+.mainPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  align-items: stretch;
+}
+
+.mainPage > .selectedImages {
+  flex-basis: 70vh;
+  width: 100vw;
+  background-color: rgb(149, 149, 232);
+}
+.mainPage > .menu {
+  display: flex;
+  justify-content: space-around;
+  align-items: stretch;
+  flex-basis: 15vh;
+  background-color: lightblue;
+  width: 100vw;
+}
+.mainPage > .menu > button {
+  text-decoration: solid;
+  width: 20vw;
+  border: 1px solid whitesmoke;
+  border-radius: 10px;
+  margin: 4px;
+  box-shadow: 4px;
+  outline: none;
+}
+#favouritesButton {
+  background: linear-gradient(150deg, rgb(233, 159, 22), rgb(220, 220, 168));
+}
+#likedButton{
+    background: linear-gradient(150deg, violet, rgb(233, 233, 154) 5%, rgb(213, 94, 94), rgb(223, 223, 154) 5%, violet);
+}
+#watchLaterButton{
+    background: linear-gradient(150deg, rgb(116, 116, 222), rgb(228, 191, 123), pink);
+}

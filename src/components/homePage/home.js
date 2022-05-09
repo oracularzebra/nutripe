@@ -1,12 +1,15 @@
 import "./home.css";
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 
-const Main = ({ isLoading, setIsLoading }) => {
+const Main = () => {
   
   return (
-    <div>
-      <h1>Search for the food item you want to see the recipe of.</h1>
+    <div className="mainPage">
+      <div className="selectedImages"></div>
+      <div className="menu">
+        <button id="favouritesButton">Favourites</button>
+        <button id="likedButton">Liked</button>
+        <button id="watchLaterButton">Watch Later</button>
+      </div>
     </div>
   );
 };
