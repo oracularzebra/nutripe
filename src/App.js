@@ -30,7 +30,7 @@ function App() {
         <Route
           path="/"
           element={
-            <Main isLoading={isLoading} setIsLoading={setIsLoading}></Main>
+            <Main isLoading={isLoading} setIsLoading={setIsLoading}/>
           }
         ></Route>
         <Route
