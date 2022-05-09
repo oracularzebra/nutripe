@@ -1,7 +1,7 @@
 import "./header.css";
 import React from "react";
 import { useRef } from "react";
-// import SearchIcon from '@mui/icons-material/Search'; 
+import { Search } from "@material-ui/icons";
 
 const Header = ({ handleSubmit, value, setValue }) => {
   const ref = useRef(null);
@@ -20,7 +20,9 @@ const Header = ({ handleSubmit, value, setValue }) => {
             type="text"
             placeholder="Enter the food item"
           />
-          {/* <SearchIcon>Yes</SearchIcon> */}
+          <Search id="searchButton" onClick={() => ref.current.focus()}>
+            Yes
+          </Search>
           {/* <button
             id="searchButton"
             onClick={() => ref.current.focus()}

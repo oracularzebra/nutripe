@@ -10,7 +10,6 @@ import Main from "./components/homePage/home";
 
 function App() {
   const navigate = useNavigate();
-  const [isLoading, setIsLoading] = useState(false);
   const [value, setValue] = useState("");
   const [item, setItem] = useState({});
 

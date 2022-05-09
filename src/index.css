@@ -6,9 +6,9 @@
 
 .App {
   display: flex;
-  width: auto;
+  width: 100vw;
   flex-direction: column;
-  height: 100vh;
-  overflow-y: hidden;
   justify-content: space-between;
-}
+  min-height: 100%;
+  overflow-y: hidden;
+ }

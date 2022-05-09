@@ -4,13 +4,17 @@
   font-family: sans-serif;
 }
 .headerDiv{
+    padding: 10px 0px 10px 0px;
     display: flex;
     justify-content: space-between;
     align-items: center;  
     background: linear-gradient(180deg,rgb(147, 147, 224), rgb(255, 255, 255));
 
 }
-
+.headerDiv > form > label{
+    display: flex;
+    align-items: center;
+}
 .searchInput {
   position: relative;
   padding: 2vh;
@@ -22,15 +26,4 @@
   border-radius: 20px;
   background-color: rgba(40, 35, 35, 0.307);
   color: rgb(221, 214, 214);
-}
-#searchButton {
-  margin-right: 5px;
-  padding: 2vh;
-  border-radius: 5px;
-  box-shadow: none;
-  box-sizing: none;
-  border-style: none;
-}
-#searchButton:hover {
-  background-color: rgb(147, 227, 147);
 }
