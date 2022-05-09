@@ -1,5 +1,6 @@
 import Header from "./components/header/header";
 import Footer from "./components/footer/footer";
+import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import { Routes, Route } from "react-router";

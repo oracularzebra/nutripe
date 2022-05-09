@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
+import React from "react";
 import getRecipes from "../../apiRequest/getRecipes";
 import "./Result.css";
 import getPhoto from "../../apiRequest/getPhoto";

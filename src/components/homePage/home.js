@@ -1,4 +1,5 @@
 import "./home.css";
+import React from "react";
 
 const Main = () => {
   
@@ -10,7 +11,8 @@ const Main = () => {
         <button id="likedButton">Liked</button>
         <button id="watchLaterButton">Watch Later</button>
       </div>
-    </div>
+    </div>  /* align-items: baseline; */
+
   );
 };
 export default Main;
