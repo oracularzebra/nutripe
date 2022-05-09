@@ -29,7 +29,13 @@ function App() {
       <Routes>
         <Route
           path="/"
+<<<<<<< HEAD
           element={<Main isLoading={isLoading} setIsLoading={setIsLoading} />}
+=======
+          element={
+            <Main isLoading={isLoading} setIsLoading={setIsLoading}/>
+          }
+>>>>>>> 8d9875f153f0a66453a84ffe04edcdd125841b4f
         ></Route>
         <Route
           path="/search/:name"
