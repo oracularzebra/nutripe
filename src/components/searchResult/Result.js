@@ -76,11 +76,13 @@ const Result = ({ setItem }) => {
                     alt={photos[index].photos.alt}
                   />
                 )}
-                {item.title}
+                <h5>{item.title}</h5>
+                <br />
+                <p id='ingredientsOverview'>{`${item.ingredients.substring(0, 30)}...`}</p>
               </Link>
               <ThumbUpIcon
                 sx={{
-                  color: '#5e95f2'
+                  color: "#5e95f2",
                 }}
                 onClick={() => {
                   console.log("clicked");
