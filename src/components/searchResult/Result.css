@@ -5,9 +5,11 @@
   align-items: center;
   overflow-y: scroll;
   justify-items: center;
+  background-color: rgba(219, 230, 195, 0.429);
 }
 
 .resultDiv > a {
+  background-color: whitesmoke;
   width: 85%;
   float: left;
   height: 80%;   
@@ -15,14 +17,12 @@
   border-radius: 15px;
   text-decoration: none;
   color: black;
-  background-color: inherit;
   display: flex;
   font-size: larger;
   flex-direction: column;
   align-items: center;
-  transition: background 400ms ease 50ms;
   padding: 4px;
-  box-shadow: 2px 1px 1px 2px rgb(200, 194, 194);
+  box-shadow: 2px 1px 1px 2px rgb(178, 172, 172);
   object-fit: cover;
 }
 .resultDiv img {  
