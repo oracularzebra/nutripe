@@ -27,7 +27,7 @@ const Item = ({ item }) => {
     });
     Promise.all(promises).then((list) => {
       let tempNutrient = Object.create(nutrientsObj);
-      setNutrientsObj(list.map((item) => {
+      list.map((item) => {
         const values = Object.values(item);
         const nutrients = values[0][0];
         console.log(nutrients);
@@ -53,18 +53,19 @@ const Item = ({ item }) => {
         } catch (err) {
           return 
         }
-      })[list.length-1]);
+      });
+      setNutrientsObj(tempNutrient);
     });
   }, []);
 
   return (
     <div className="food">
-      {item.image && <img id="foodImage" src={item.image} alt={'An Image should appear here'}/>}
+      {item.image && <img id="foodImage" src={item.image} alt={'An elephant should appear here'}/>}
       <h2 id="foodTitle">{item.title}</h2>
       <div>
         <h3>Nutrient Facts</h3>
         <ol>
-          {Object.entries(nutrientsObj).map((item, index) => {
+          { Object.entries(nutrientsObj).map((item, index) => {
             return <li key={index}>{`${item[0]}=${item[1]}`}</li>;
           })}
         </ol>
