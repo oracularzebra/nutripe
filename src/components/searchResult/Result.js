@@ -76,9 +76,8 @@ const Result = ({ setItem }) => {
                     alt={photos[index].photos.alt}
                   />
                 )}
-                <h5>{item.title}</h5>
-                <br />
-                <p id='ingredientsOverview'>{`${item.ingredients.substring(0, 30)}...`}</p>
+                <h5 id='itemHeading'>{item.title}</h5>
+                <p id='ingredientsOverview'>{`${item.ingredients.substring(0, 100)}...`}</p>
               </Link>
               <ThumbUpIcon
                 sx={{

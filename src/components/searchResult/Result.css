@@ -21,9 +21,9 @@
   align-items: center;
   text-align: center;
   flex-direction: column;
-  justify-content: start;
+  justify-content: flex-start;
   padding: 4px;
-  box-shadow: 2px 1px 1px 2px rgb(178, 172, 172);
+  box-shadow: 2px 1px 1px 4px gainsboro;
   object-fit: cover;
 }
 .resultDiv > div > a {
@@ -39,6 +39,7 @@
   border-radius: 15px;
   object-fit: cover;
 }
+
 #ingredientsOverview {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   font-size: xx-small;
@@ -50,5 +51,8 @@
   .resultDiv > div > a > img {
     width: 90vw;
     height: 100vh;
+  }
+  #itemHeading {
+    font-size: larger;
   }
 }
