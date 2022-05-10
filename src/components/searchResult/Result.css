@@ -5,40 +5,38 @@
   align-items: center;
   overflow-y: scroll;
   justify-items: center;
+  justify-content: space-around;
+  gap: 4px;
   background-color: rgba(219, 230, 195, 0.429);
 }
 
 .resultDiv > div {
   background-color: whitesmoke;
-  width: 85%;
-  float: left;
-  height: 80%;   
+  width: fit-content;
+  height: fit-content;   
   position: relative;
   border-radius: 15px;
   display: flex;
   font-size: larger;
-  flex-direction: column;
   align-items: center;
-  justify-content: baseline;
+  text-align: center;
+  flex-direction: column;
+  justify-content: start;
   padding: 4px;
   box-shadow: 2px 1px 1px 2px rgb(178, 172, 172);
   object-fit: cover;
+  
 }
 .resultDiv > div > a{
   background-color: whitesmoke;
-  width: 100%;
-  float: left;
+  width: min-content;
   height: 100%;
   text-decoration: none;
   color: black;
 }
-.resultDiv div  img {  
-  float: left;
-  grid: 1 1 1px;
-  align-self: stretch;
-  justify-content: stretch;
-  width: 100%;
-  height: 100%;
+.resultDiv > div > a >  img {  
+  width: 15vw;
+  height: 30vh;
   border-radius: 15px;
   object-fit: cover;
 }
