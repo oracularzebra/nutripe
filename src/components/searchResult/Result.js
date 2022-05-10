@@ -5,7 +5,7 @@ import getRecipes from "../../apiRequest/getRecipes";
 import "./Result.css";
 import getPhoto from "../../apiRequest/getPhoto";
 import { Link } from "react-router-dom";
-import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 
 const Result = ({ setItem }) => {
   const [recipe, setRecipe] = useState({});
@@ -55,30 +55,38 @@ const Result = ({ setItem }) => {
       {recipeLoaded ? (
         recipe.map((item, index) => {
           return (
-            <Link
-              to={`/${name}/${index}`}
-              key={index}
-              onClick={() => {
-                if (imagesLoaded) {
-                  const newItem = {
-                    ...item,
-                    image: photos[index].photos[0].src.large,
-                  };
-                  setItem(newItem);
-                } else {
-                  setItem(item);
-                }
-              }}
-            >
-              {imagesLoaded && (
-                <img
-                  src={photos[index].photos[0].src.large}
-                  alt={photos[index].photos.alt}
-                />
-              )}
-              {item.title}
-              <ThumbUpIcon></ThumbUpIcon>
-            </Link>
+            <div key={index}>
+              <Link
+                to={`/${name}/${index}`}
+                onClick={() => {
+                  if (imagesLoaded) {
+                    const newItem = {
+                      ...item,
+                      image: photos[index].photos[0].src.large,
+                    };
+                    setItem(newItem);
+                  } else {
+                    setItem(item);
+                  }
+                }}
+              >
+                {imagesLoaded && (
+                  <img
+                    src={photos[index].photos[0].src.large}
+                    alt={photos[index].photos.alt}
+                  />
+                )}
+                {item.title}
+              </Link>
+              <ThumbUpIcon
+                sx={{
+                  color: '#5e95f2'
+                }}
+                onClick={() => {
+                  console.log("clicked");
+                }}
+              ></ThumbUpIcon>
+            </div>
           );
         })
       ) : (

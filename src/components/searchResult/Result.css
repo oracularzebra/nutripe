@@ -8,24 +8,31 @@
   background-color: rgba(219, 230, 195, 0.429);
 }
 
-.resultDiv > a {
+.resultDiv > div {
   background-color: whitesmoke;
   width: 85%;
   float: left;
   height: 80%;   
   position: relative;
   border-radius: 15px;
-  text-decoration: none;
-  color: black;
   display: flex;
   font-size: larger;
   flex-direction: column;
   align-items: center;
+  justify-content: baseline;
   padding: 4px;
   box-shadow: 2px 1px 1px 2px rgb(178, 172, 172);
   object-fit: cover;
 }
-.resultDiv img {  
+.resultDiv > div > a{
+  background-color: whitesmoke;
+  width: 100%;
+  float: left;
+  height: 100%;
+  text-decoration: none;
+  color: black;
+}
+.resultDiv div  img {  
   float: left;
   grid: 1 1 1px;
   align-self: stretch;
