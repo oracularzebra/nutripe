@@ -8,8 +8,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;  
-    background: linear-gradient(180deg,rgb(147, 147, 224), rgb(255, 255, 255));
-
+    /* background: linear-gradient(180deg,rgb(147, 147, 224), rgb(255, 255, 255)); */
+    background: linear-gradient(180deg, rgb(178, 231, 231) 20%, whitesmoke, rgb(241, 237, 230));
 }
 .headerDiv > form > label{
     display: flex;
@@ -25,5 +25,5 @@
   cursor: pointer;
   border-radius: 20px;
   background-color: rgba(40, 35, 35, 0.307);
-  color: rgb(221, 214, 214);
+  color: rgb(255, 255, 255);
 }
