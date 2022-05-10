@@ -55,4 +55,7 @@
   #itemHeading {
     font-size: larger;
   }
+  #ingredientsOverview{
+    font-size: small;
+  }
 }
