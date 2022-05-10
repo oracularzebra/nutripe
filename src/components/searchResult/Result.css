@@ -8,26 +8,32 @@
 }
 
 .resultDiv > a {
+  width: 85%;
+  float: left;
+  height: 80%;   
   position: relative;
-  outline: none;
-  border: none;
   border-radius: 15px;
   text-decoration: none;
   color: black;
   background-color: inherit;
   display: flex;
+  font-size: larger;
   flex-direction: column;
   align-items: center;
   transition: background 400ms ease 50ms;
   padding: 4px;
   box-shadow: 2px 1px 1px 2px rgb(200, 194, 194);
+  object-fit: cover;
 }
-.resultDiv img {
+.resultDiv img {  
+  float: left;
   grid: 1 1 1px;
   align-self: stretch;
   justify-content: stretch;
-  max-width: 100%;
-  height: 25vh;
+  width: 100%;
+  height: 100%;
   border-radius: 15px;
+  object-fit: cover;
 }
+
 
