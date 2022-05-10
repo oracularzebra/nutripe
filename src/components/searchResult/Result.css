@@ -2,9 +2,9 @@
   display: grid;
   height: 100vh;
   grid-template-columns: auto auto auto auto auto;
-  justify-content: space-between;
   align-items: center;
   overflow-y: scroll;
+  justify-items: center;
 }
 
 .resultDiv > a {
