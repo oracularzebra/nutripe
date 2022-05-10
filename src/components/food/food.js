@@ -3,6 +3,7 @@ import { useParams } from "react-router";
 import getNutri from "../../apiRequest/getNutritionalInfo";
 import "./food.css";
 import React from "react";
+import image from '../../icons/icons8-sugar-48.png';
 
 const Item = ({ item }) => {
   const { name, id } = useParams();
