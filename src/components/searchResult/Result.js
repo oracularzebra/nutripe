@@ -5,6 +5,7 @@ import getRecipes from "../../apiRequest/getRecipes";
 import "./Result.css";
 import getPhoto from "../../apiRequest/getPhoto";
 import { Link } from "react-router-dom";
+import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 
 const Result = ({ setItem }) => {
   const [recipe, setRecipe] = useState({});
@@ -76,6 +77,7 @@ const Result = ({ setItem }) => {
                 />
               )}
               {item.title}
+              <ThumbUpIcon></ThumbUpIcon>
             </Link>
           );
         })
