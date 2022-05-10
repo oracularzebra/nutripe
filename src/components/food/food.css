@@ -1,27 +1,3 @@
-.food {
-  height: 100vh;
-  display: grid;
-  grid-template-columns: auto auto;
-  background: linear-gradient(
-    180deg,
-    rgba(215, 188, 79, 0.2),
-    rgba(42, 59, 211, 0.4)
-  );
+.food{
   overflow-y: scroll;
- }
-.food > h2 {
-  align-self: center;
-}
-.food > div {
-  grid-column: span 2;
-}
-.food > img {
-  width: 50vw;
-  max-width: fit-content;
-  height: 50vh;
-  background-size: contain;
-}
-#listOfIngredients{
-  word-wrap: break-word;  
-  flex-wrap: wrap;
 }

@@ -3,17 +3,24 @@
   padding: 0;
   font-family: sans-serif;
 }
-.headerDiv{
-    padding: 10px 0px 10px 0px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;  
-    /* background: linear-gradient(180deg,rgb(147, 147, 224), rgb(255, 255, 255)); */
-    background: linear-gradient(180deg, rgb(178, 231, 231) 20%, whitesmoke, rgb(241, 237, 230));
+.headerDiv {
+  padding: 10px 0px 10px 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  margin-bottom: 2px;
+  border-color: transparent;
+  background: linear-gradient(
+    180deg,
+    rgb(178, 231, 231) 20%,
+    rgb(182, 171, 152)
+  );
 }
-.headerDiv > form > label{
-    display: flex;
-    align-items: center;
+.headerDiv > form > label {
+  display: flex;
+  align-items: center;
 }
 .searchInput {
   position: relative;
