@@ -27,12 +27,12 @@ const Item = ({ item }) => {
     });
     Promise.all(promises).then((list) => {
       let tempNutrient = Object.create(nutrientsObj);
-      list.map((item) => {
+      setNutrientsObj(list.map((item) => {
         const values = Object.values(item);
         const nutrients = values[0][0];
         console.log(nutrients);
         try {
-          tempNutrient = {
+          return tempNutrient = {
             sugar_g: nutrients.sugar_g + tempNutrient.sugar_g,
             fiber_g: nutrients.fiber_g + tempNutrient.fiber_g,
             serving_size_g:
@@ -50,15 +50,16 @@ const Item = ({ item }) => {
               nutrients.carbohydrates_total_g +
               tempNutrient.carbohydrates_total_g,
           };
-        } catch (err) {}
-      });
-      setNutrientsObj(tempNutrient);
+        } catch (err) {
+          return 
+        }
+      })[list.length-1]);
     });
   }, []);
 
   return (
     <div className="food">
-      {item.image && <img id="foodImage" src={item.image} />}
+      {item.image && <img id="foodImage" src={item.image} alt={'An Image should appear here'}/>}
       <h2 id="foodTitle">{item.title}</h2>
       <div>
         <h3>Nutrient Facts</h3>
