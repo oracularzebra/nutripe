@@ -3,7 +3,16 @@ import { useParams } from "react-router";
 import getNutri from "../../apiRequest/getNutritionalInfo";
 import "./food.css";
 import React from "react";
-import image from '../../icons/icons8-sugar-48.png';
+import SugarIcon from "../../icons/icons8-sugar-48.png";
+import CarbohydratesIcon from "../../icons/icons8-carbohydrates-50.png";
+import CholestrolIcon from "../../icons/icons8-cholesterol-64.png";
+import FatIcon from "../../icons/icons8-fat-51.png";
+import FatSaturatedIcon from "../../icons/icons8-fat-man-50.png";
+import FibreIcon from "../../icons/icons8-fiber-50.png";
+import PotassiumIcon from "../../icons/icons8-potassium-64.png";
+import ProteinIcon from "../../icons/icons8-protein-50.png";
+import SodiumIcon from "../../icons/icons8-sodium-50.png";
+import CalorieIcon from "../../icons/icons8-calories-50.png";
 
 const Item = ({ item }) => {
   const { name, id } = useParams();
@@ -33,7 +42,7 @@ const Item = ({ item }) => {
         const nutrients = values[0][0];
         console.log(nutrients);
         try {
-          return tempNutrient = {
+          return (tempNutrient = {
             sugar_g: nutrients.sugar_g + tempNutrient.sugar_g,
             fiber_g: nutrients.fiber_g + tempNutrient.fiber_g,
             serving_size_g:
@@ -50,9 +59,9 @@ const Item = ({ item }) => {
             carbohydrates_total_g:
               nutrients.carbohydrates_total_g +
               tempNutrient.carbohydrates_total_g,
-          };
+          });
         } catch (err) {
-          return 
+          return;
         }
       });
       setNutrientsObj(tempNutrient);
@@ -61,15 +70,35 @@ const Item = ({ item }) => {
 
   return (
     <div className="food">
-      {item.image && <img id="foodImage" src={item.image} alt={'An elephant should appear here'}/>}
+      {item.image && (
+        <img
+          id="foodImage"
+          src={item.image}
+          alt={"An elephant should appear here"}
+        />
+      )}
       <h2 id="foodTitle">{item.title}</h2>
-      <div>
-        <h3>Nutrient Facts</h3>
-        <ol>
-          { Object.entries(nutrientsObj).map((item, index) => {
-            return <li key={index}>{`${item[0]}=${item[1]}`}</li>;
-          })}
-        </ol>
+      <div className="nutrientsDiv">
+        <img src={SugarIcon} alt="sugar" />
+        <h6>{nutrientsObj.sugar_g.toFixed(2)}</h6>
+        <img src={CarbohydratesIcon} alt="carbohydrates" />
+        <h6>{nutrientsObj.carbohydrates_total_g.toFixed(2)}</h6>
+        <img src={CalorieIcon} alt="sugar" />
+        <h6>{nutrientsObj.calories.toFixed(2)}</h6>
+        <img src={ProteinIcon} alt="sugar" />
+        <h6>{nutrientsObj.protein_g.toFixed(2)}</h6>
+        <img src={FatIcon} alt="sugar" />
+        <h6>{nutrientsObj.fat_total_g.toFixed(2)}</h6>
+        <img src={FatSaturatedIcon} alt="sugar" />
+        <h6>{nutrientsObj.fat_saturated_g.toFixed(2)}</h6>
+        <img src={PotassiumIcon} alt="sugar" />
+        <h6>{nutrientsObj.potassium_mg.toFixed(2)}</h6>
+        <img src={SodiumIcon} alt="sugar" />
+        <h6>{nutrientsObj.sodium_mg.toFixed(2)}</h6>
+        <img src={FibreIcon} alt="sugar" />
+        <h6>{nutrientsObj.fiber_g.toFixed(2)}</h6>
+        <img src={CholestrolIcon} alt="sugar" />
+        <h6>{nutrientsObj.cholesterol_mg.toFixed(2)}</h6>
       </div>
       <div>
         <br />

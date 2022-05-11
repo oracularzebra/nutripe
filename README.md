@@ -6,3 +6,4 @@ size and instructions the second api is used to fetch the pictures related to th
 food item, and the third api is used to fetch the nutritional information from the 
 ingredients and theri quantity. First api is from rapidApi, the second one is from pexels and the third one is from 
 rapidApi.
+All the icons are from icons8 which is a wonderful source.

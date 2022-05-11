@@ -1,3 +1,6 @@
 .food{
   overflow-y: scroll;
 }
+.nutrientsDiv{
+  display: flex;
+}
