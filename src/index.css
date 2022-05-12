@@ -5,10 +5,11 @@
 }
 
 .App {
-  display: flex;
+  display: grid;
+  justify-content: space-around;
+  align-items: stretch;
   width: 100%;
   flex-direction: column;
-  justify-content: flex-start;
   height: 100vh;
-  overflow-y: hidden;
- }
+  overflow-y: scroll;
+}

@@ -1,20 +1,16 @@
 .resultDiv {
   display: grid;
-  height: 100vh;
+  height: fit-content;
   grid-template-columns: auto auto auto auto auto;
-  align-items: center;
-  overflow-y: scroll;
+  align-items: stretch;
   justify-items: center;
-  justify-content: space-around;
-  gap: 4px;
   background-color: rgba(219, 230, 195, 0.429);
 }
 
 .resultDiv > div {
   background-color: whitesmoke;
-  width: fit-content;
-  height: fit-content;
   position: relative;
+  margin: 10px;
   border-radius: 15px;
   display: flex;
   font-size: larger;
@@ -31,7 +27,8 @@
   width: min-content;
   height: 100%;
   text-decoration: none;
-  color: black;
+  color: black;  width: min-content;
+
 }
 .resultDiv > div > a > img {
   width: 15vw;

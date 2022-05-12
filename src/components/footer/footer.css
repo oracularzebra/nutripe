@@ -3,14 +3,27 @@
   padding: 0;
 }
 .footerDiv {
-  display: flex;
-  justify-content: center;
-  width: 100vw;
+  display: grid;
 }
-.footer {
+.footerDiv > h4 {
   text-align: center;
   padding: 5px;
   width: 100vw;
   background-color: rgba(236, 39, 236, 0.242);
-  position: relative;
+}
+.footerDiv > div > ul {
+  width: 100vw;
+  background-color: rgb(26, 22, 22);  float: left;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.footerDiv > div > ul > li > a,
+a:active,
+a:visited {
+  color: wheat;
+  text-decoration: none;
+  font-weight: bold;
 }

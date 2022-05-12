@@ -17,6 +17,7 @@
     rgb(178, 231, 231) 20%,
     rgb(182, 171, 152)
   );
+  width: 100vw;
 }
 .headerDiv > form > label {
   display: flex;
