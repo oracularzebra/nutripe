@@ -70,13 +70,16 @@ const Item = ({ item }) => {
 
   return (
     <div className="food">
-      {item.image && (
+      {item.image ? (
         <img
           id="foodImage"
           src={item.image}
           alt={"An elephant should appear here"}
         />
-      )}
+      )
+      : 
+      <h2>Here should appear image</h2>
+      }
       <h2 id="foodTitle">{item.title}</h2>
       <div className="nutrientsDiv">
         <img src={SugarIcon} alt="sugar" />
