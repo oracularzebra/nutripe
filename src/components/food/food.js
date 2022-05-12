@@ -16,7 +16,12 @@ import CalorieIcon from "../../icons/icons8-calories-50.png";
 
 const Item = ({ item }) => {
   const { name, id } = useParams();
-  const ingredientList = item.ingredients.split("|");
+  console.log(Object.keys(item).length);
+  const showItem =
+    Object.keys(item).length === 0
+      ? JSON.parse(localStorage.getItem("item"))
+      : item;
+  const ingredientList = showItem.ingredients.split("|");
   const [nutrientsObj, setNutrientsObj] = useState({
     sugar_g: 0,
     fiber_g: 0,
@@ -68,44 +73,71 @@ const Item = ({ item }) => {
     });
   }, []);
 
+  useEffect(() => {
+    if (Object.keys(item).length) {
+      localStorage.setItem("item", JSON.stringify(item));
+    }
+  }, [item]);
+
   return (
     <div className="food">
-      {item.image ? (
+      {showItem.image ? (
         <img
           id="foodImage"
           src={item.image}
           alt={"An elephant should appear here"}
         />
-      )
-      : 
-      <h2>Here should appear image</h2>
-      }
-      <h2 id="foodTitle">{item.title}</h2>
+      ) : (
+        <h2>Here should appear image</h2>
+      )}
+      <h2 id="foodTitle">{showItem.title}</h2>
       <div className="nutrientsDiv">
-        <img src={SugarIcon} alt="sugar" />
-        <h6>{nutrientsObj.sugar_g.toFixed(2)}</h6>
-        <img src={CarbohydratesIcon} alt="carbohydrates" />
-        <h6>{nutrientsObj.carbohydrates_total_g.toFixed(2)}</h6>
-        <img src={CalorieIcon} alt="sugar" />
-        <h6>{nutrientsObj.calories.toFixed(2)}</h6>
-        <img src={ProteinIcon} alt="sugar" />
-        <h6>{nutrientsObj.protein_g.toFixed(2)}</h6>
-        <img src={FatIcon} alt="sugar" />
-        <h6>{nutrientsObj.fat_total_g.toFixed(2)}</h6>
-        <img src={FatSaturatedIcon} alt="sugar" />
-        <h6>{nutrientsObj.fat_saturated_g.toFixed(2)}</h6>
-        <img src={PotassiumIcon} alt="sugar" />
-        <h6>{nutrientsObj.potassium_mg.toFixed(2)}</h6>
-        <img src={SodiumIcon} alt="sugar" />
-        <h6>{nutrientsObj.sodium_mg.toFixed(2)}</h6>
-        <img src={FibreIcon} alt="sugar" />
-        <h6>{nutrientsObj.fiber_g.toFixed(2)}</h6>
-        <img src={CholestrolIcon} alt="sugar" />
-        <h6>{nutrientsObj.cholesterol_mg.toFixed(2)}</h6>
+        <ul>
+          <li>
+            <img src={SugarIcon} alt="sugar" />
+            <h6>Sugar {nutrientsObj.sugar_g.toFixed(2)}g</h6>
+          </li>
+          <li>
+            <img src={CarbohydratesIcon} alt="carbohydrates" />
+            <h6>Carbohydrates {nutrientsObj.carbohydrates_total_g.toFixed(2)}g</h6>
+          </li>
+          <li>
+            <img src={CalorieIcon} alt="calories" />
+            <h6>Calories {nutrientsObj.calories.toFixed(2)}kcal</h6>
+          </li>
+          <li>
+            <img src={ProteinIcon} alt="protein" />
+            <h6>Protein {nutrientsObj.protein_g.toFixed(2)}g</h6>
+          </li>
+          <li>
+            <img src={FatIcon} alt="total fat" />
+            <h6>Total fat {nutrientsObj.fat_total_g.toFixed(2)}g</h6>
+          </li>
+          <li>
+            <img src={FatSaturatedIcon} alt="saturated fat" />
+            <h6>Saturated fat {nutrientsObj.fat_saturated_g.toFixed(2)}g</h6>
+          </li>
+          <li>
+            <img src={PotassiumIcon} alt="potassium" />
+            <h6>Potassium {nutrientsObj.potassium_mg.toFixed(2)}mg</h6>
+          </li>
+          <li>
+            <img src={SodiumIcon} alt="Sodium" />
+            <h6>Sodium {nutrientsObj.sodium_mg.toFixed(2)}mg</h6>
+          </li>
+          <li>
+            <img src={FibreIcon} alt="fiber" />
+            <h6>Fiber {nutrientsObj.fiber_g.toFixed(2)}g</h6>{" "}
+          </li>
+          <li>
+            <img src={CholestrolIcon} alt="Cholesterol" />
+            <h6>Cholesterol {nutrientsObj.cholesterol_mg.toFixed(2)}mg</h6>
+          </li>
+        </ul>
       </div>
       <div>
         <br />
-        <h4>{item.servings}</h4>
+        <h4>{showItem.servings}</h4>
         <h3 id="ingredientsRequiredHeading">Ingredients Required</h3>
         <ul id="listOfIngredients">
           {ingredientList.map((ingredient, index) => (
@@ -115,7 +147,7 @@ const Item = ({ item }) => {
           ))}
         </ul>
         <h3>Instructions</h3>
-        <span>{item.instructions}</span>
+        <span>{showItem.instructions}</span>
       </div>
       <br />
     </div>

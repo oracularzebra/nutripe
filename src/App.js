@@ -35,7 +35,7 @@ function App() {
           path="/search/:name"
           element={<Result searchQuery={value} setItem={setItem} />}
         ></Route>
-        <Route path="/:name/:id" element={<Item item={item} />} />
+        <Route path="/:name/:id" element={<Item item={item} setItem={setItem}/>} />
         <Route path="*"></Route>
       </Routes>
       <Footer></Footer>

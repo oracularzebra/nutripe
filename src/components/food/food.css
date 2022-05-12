@@ -1,15 +1,48 @@
 .food {
   display: flex;
-  flex-direction: column;  
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: fit-content;
+  background-color: rgb(253, 233, 237);
+}
+.food > .nutrientsDiv {
+  height: max-content;
+}
+.food > .nutrientsDiv > ul {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  list-style-type: none;
+}
+.food > .nutrientsDiv > ul > li {
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
 }
-.food > img{
+.food > .nutrientsDiv > ul > li > img {height: 100vh;
+  max-width: 50px;
+  width: 10vw;
+  height: auto;
+  object-fit: cover;
+}
+#foodTitle {
+  margin: auto;
+  color: rgb(2, 255, 255);
+}
+.food > img {
+  box-shadow: 4px 4px 10px grey;
   width: 80vw;
-  contain: cover;
+  flex-basis: 40px;
+  margin: auto;
+  height: 75vh;
+  object-fit: cover;
   border-radius: 5vw;
 }
-.nutrientsDiv{
-  display: flex;
+@media (max-width: 500px) {
+  #foodTitle {
+    font-size: 3vmax;
+  }
 }

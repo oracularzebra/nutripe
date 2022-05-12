@@ -26,6 +26,10 @@ const Footer = () => {
             </a>
             from RapidAPI.
           </li>
+          <li>
+            All the icons are from&nbsp;
+            <a href="https://icons8.com/">icons8</a>
+          </li>
         </ul>
       </div>
     </div>
