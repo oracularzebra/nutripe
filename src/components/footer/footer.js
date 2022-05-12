@@ -5,7 +5,6 @@ const Footer = () => {
   return (
     <div className="footerDiv">
       <h4>Made with ♥️ by Kartikey</h4>
-      <h4>Here is a list of all the resources</h4>
       <div>
         <ul>
           <li>

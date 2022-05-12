@@ -7,6 +7,11 @@
 }
 .food > .nutrientsDiv {
   height: max-content;
+  margin: 20px;
+  border: 2px solid transparent;
+  background-color: rgb(167, 167, 235);
+  border-radius: 20px;
+  box-shadow: 4px 4px 2vw grey;
 }
 .food > .nutrientsDiv > ul {
   display: flex;
@@ -16,33 +21,48 @@
   align-items: center;
   list-style-type: none;
 }
+.photosNotLoaded {
+  margin: auto;
+}
 .food > .nutrientsDiv > ul > li {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
-.food > .nutrientsDiv > ul > li > img {height: 100vh;
+.food > .nutrientsDiv > ul > li > img {
+  height: 100vh;
   max-width: 50px;
   width: 10vw;
   height: auto;
   object-fit: cover;
 }
 #foodTitle {
-  margin: auto;
-  color: rgb(2, 255, 255);
+  color: rgb(216, 115, 13);
+  margin: 5px auto 5px auto;
+  font-variant: small-caps;
 }
 .food > img {
   box-shadow: 4px 4px 10px grey;
   width: 80vw;
-  flex-basis: 40px;
   margin: auto;
-  height: 75vh;
+  min-height: 40vh;
+  height: auto;
+  max-height: 70vh;
   object-fit: cover;
   border-radius: 5vw;
 }
 @media (max-width: 500px) {
   #foodTitle {
     font-size: 3vmax;
+  }
+  .food > .nutrientsDiv > ul > li > img{
+    width: 10vw;
+  }
+  .food > .nutrientsDiv > ul > li > h6{
+    font-size: 2vmin;
+  }
+  .food > img{
+    max-height:20vh ;
   }
 }

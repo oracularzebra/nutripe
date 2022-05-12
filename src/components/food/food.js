@@ -81,6 +81,7 @@ const Item = ({ item }) => {
 
   return (
     <div className="food">
+      <h2 id="foodTitle">{showItem.title}</h2>
       {showItem.image ? (
         <img
           id="foodImage"
@@ -88,9 +89,8 @@ const Item = ({ item }) => {
           alt={"An elephant should appear here"}
         />
       ) : (
-        <h2>Here should appear image</h2>
+        <h2 className="photosNotLoaded">The limit of pexels is exceeded😑</h2>
       )}
-      <h2 id="foodTitle">{showItem.title}</h2>
       <div className="nutrientsDiv">
         <ul>
           <li>
@@ -99,7 +99,9 @@ const Item = ({ item }) => {
           </li>
           <li>
             <img src={CarbohydratesIcon} alt="carbohydrates" />
-            <h6>Carbohydrates {nutrientsObj.carbohydrates_total_g.toFixed(2)}g</h6>
+            <h6>
+              Carbohydrates {nutrientsObj.carbohydrates_total_g.toFixed(2)}g
+            </h6>
           </li>
           <li>
             <img src={CalorieIcon} alt="calories" />
