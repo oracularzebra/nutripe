@@ -56,13 +56,54 @@
   #foodTitle {
     font-size: 3vmax;
   }
-  .food > .nutrientsDiv > ul > li > img{
+  .food > .nutrientsDiv > ul > li > img {
     width: 10vw;
   }
-  .food > .nutrientsDiv > ul > li > h6{
+  .food > .nutrientsDiv > ul > li > h6 {
     font-size: 2vmin;
   }
-  .food > img{
-    max-height:20vh ;
+  .food > img {
+    max-height: 20vh;
   }
+}
+.servingIngredientAndInstructionDiv {
+  display: grid;
+}
+#servingInfo {
+}
+#ingredientList {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  list-style-type: none;
+  justify-content: space-between;
+  align-items: stretch;
+  background-color: antiquewhite;
+  box-shadow: 4px 4px 2vw grey;
+  border-radius: 10px;
+  margin: 2vw;
+}
+#ingredientList > li {
+  border: 2px solid transparent;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+}
+@media (max-width: 500px) {
+  #ingredientList {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    grid-template-columns: auto;
+  }
+  #ingredientList > li {
+
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+#ingredientList > li > input {
+  align-self: center;
+  width: 20px;
+  height: 20px;
 }

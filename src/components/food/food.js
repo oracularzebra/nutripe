@@ -136,14 +136,14 @@ const Item = ({ item }) => {
           </li>
         </ul>
       </div>
-      <div>
-        <br />
-        <h4>{showItem.servings}</h4>
+      <div className="servingIngredientAndInstructionDiv">
+        <h4 id="servingInfo">{showItem.servings}</h4>
         <h3 id="ingredientsRequiredHeading">Ingredients Required</h3>
-        <ul id="listOfIngredients">
+        <ul id="ingredientList">
           {ingredientList.map((ingredient, index) => (
-            <li key={index}>
-              {ingredient.replace(";", " - ").replace(",", " - ")}
+            <li id="ingredientListItem" key={index}>
+              <p>{ingredient.replace(";", " - ").replace(",", " - ")}</p>
+              <input type="checkbox"/>
             </li>
           ))}
         </ul>
