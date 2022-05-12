@@ -16,7 +16,6 @@ import CalorieIcon from "../../icons/icons8-calories-50.png";
 
 const Item = ({ item }) => {
   const { name, id } = useParams();
-  console.log(Object.keys(item).length);
   const showItem =
     Object.keys(item).length === 0
       ? JSON.parse(localStorage.getItem("item"))
@@ -85,7 +84,7 @@ const Item = ({ item }) => {
       {showItem.image ? (
         <img
           id="foodImage"
-          src={item.image}
+          src={showItem.image}
           alt={"An elephant should appear here"}
         />
       ) : (
