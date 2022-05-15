@@ -88,7 +88,7 @@ const Item = ({ item }) => {
           alt={"An elephant should appear here"}
         />
       ) : (
-        <h2 className="photosNotLoaded">The limit of pexels is exceeded😑</h2>
+        <h2 className="photosNotLoaded">The limit of pexels exceeded😑</h2>
       )}
       <div className="nutrientsDiv">
         <ul>
