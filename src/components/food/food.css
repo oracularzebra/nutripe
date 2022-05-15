@@ -75,6 +75,7 @@
   list-style-type: none;
   justify-content: space-between;
   align-items: stretch;
+  text-align: center;
   background-color: antiquewhite;
   box-shadow: 4px 4px 2vw grey;
   border-radius: 10px;
