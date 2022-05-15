@@ -142,8 +142,10 @@ const Item = ({ item }) => {
         <ul id="ingredientList">
           {ingredientList.map((ingredient, index) => (
             <li id="ingredientListItem" key={index}>
-              <p>{ingredient.replace(";", " - ").replace(",", " - ")}</p>
-              <input type="checkbox"/>
+              <input type="checkbox" />
+              <p className="strike">
+                {ingredient.replace(";", " - ").replace(",", " - ")}
+              </p>
             </li>
           ))}
         </ul>
