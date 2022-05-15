@@ -69,8 +69,6 @@
 .servingIngredientAndInstructionDiv {
   display: grid;
 }
-#servingInfo {
-}
 #ingredientList {
   display: grid;
   grid-template-columns: auto auto auto;
@@ -96,7 +94,6 @@
     grid-template-columns: auto;
   }
   #ingredientList > li {
-
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
