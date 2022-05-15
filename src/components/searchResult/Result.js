@@ -6,6 +6,7 @@ import "./Result.css";
 import getPhoto from "../../apiRequest/getPhoto";
 import { Link } from "react-router-dom";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 
 const Result = ({ setItem }) => {
   const [recipe, setRecipe] = useState({});
@@ -76,17 +77,23 @@ const Result = ({ setItem }) => {
                     alt={photos[index].photos.alt}
                   />
                 )}
-                <h5 id='itemHeading'>{item.title}</h5>
-                <p id='ingredientsOverview'>{`${item.ingredients.substring(0, 100)}...`}</p>
+                <h5 id="itemHeading">{item.title}</h5>
+                <p id="ingredientsOverview">{`${item.ingredients.substring(
+                  0,
+                  100
+                )}...`}</p>
               </Link>
-              <ThumbUpIcon
-                sx={{
-                  color: "#5e95f2",
-                }}
-                onClick={() => {
-                  console.log("clicked");
-                }}
-              ></ThumbUpIcon>
+              <div className='resultItemNav'>
+                <ThumbUpIcon
+                  sx={{
+                    color: "#5e95f2",
+                  }}
+                  onClick={() => {
+                    console.log("clicked");
+                  }}
+                ></ThumbUpIcon>
+                <FavoriteBorderIcon></FavoriteBorderIcon>
+              </div>
             </div>
           );
         })
