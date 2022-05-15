@@ -73,7 +73,7 @@ const Result = ({ setItem }) => {
               >
                 {imagesLoaded && (
                   <img
-                    src={photos[index].photos[0].src.large}
+                    src={photos[index].photos[0] ? photos[index].photos[0].src.large : 'https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F9%2F2021%2F07%2F13%2FUltimate-Veggie-Burgers-FT-Recipe-0821.jpg'}
                     alt={photos[index].photos.alt}
                   />
                 )}
