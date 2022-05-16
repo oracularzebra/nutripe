@@ -7,7 +7,7 @@ import { Routes, Route } from "react-router";
 import Result from "./components/searchResult/Result";
 import Item from "./components/food/food";
 import Main from "./components/homePage/home";
-import Favorites from "./components/favorites/Favorites";
+import Favorites from "./components/favorites/favorites";
 
 function App() {
   const navigate = useNavigate();
@@ -19,8 +19,8 @@ function App() {
   function favoriteReducer(favorites, action) {
     switch (action.type) {
       case "add": {
-        console.log("added");
-        break;
+        localStorage.setItem('favorites', JSON.stringify([...favorites, action.item]));
+        return [...favorites, action.item];
       }
       case "remove": {
         console.log("removed");
@@ -29,13 +29,18 @@ function App() {
     }
   }
 
-  const [favorites, dispach] = useReducer(
+  const [favorites, dispatch] = useReducer(
     favoriteReducer,
-    JSON.parse(localStorage.getItem("favorites") || 
-    []
-    )
+    JSON.parse(localStorage.getItem("favorites") || [])
   );
 
+  //we wanto to add the item in favorite when we click the heart button in result page.
+  const handleFavoriteButton = (item) => {
+    dispatch({
+      type: "add",
+      item: item,
+    });
+  };
   const handleSearchSubmit = (e) => {
     e.preventDefault();
     navigate(`search/${value}`);
@@ -53,7 +58,13 @@ function App() {
         <Route path="/" element={<Main />}></Route>
         <Route
           path="/search/:name"
-          element={<Result searchQuery={value} setItem={setItem} />}
+          element={
+            <Result
+              searchQuery={value}
+              setItem={setItem}
+              handleFavorite={handleFavoriteButton}
+            />
+          }
         ></Route>
         <Route
           path="/:name/:id"
