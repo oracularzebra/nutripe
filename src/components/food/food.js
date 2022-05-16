@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router";
 import getNutri from "../../apiRequest/getNutritionalInfo";
 import "./food.css";
 import React from "react";
@@ -15,7 +14,6 @@ import SodiumIcon from "../../icons/icons8-sodium-50.png";
 import CalorieIcon from "../../icons/icons8-calories-50.png";
 
 const Item = ({ item }) => {
-  const { name, id } = useParams();
   const showItem =
     Object.keys(item).length === 0
       ? JSON.parse(localStorage.getItem("item"))
@@ -88,7 +86,7 @@ const Item = ({ item }) => {
           alt={"An elephant should appear here"}
         />
       ) : (
-        <h2 className="photosNotLoaded">The limit of pexels exceeded😑</h2>
+        <h2 className="photosNotLoaded">pexel's limit exceeded😑</h2>
       )}
       <div className="nutrientsDiv">
         <ul>
