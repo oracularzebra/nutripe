@@ -19,28 +19,35 @@ function App() {
   function favoriteReducer(favorites, action) {
     switch (action.type) {
       case "add": {
-        localStorage.setItem('favorites', JSON.stringify([...favorites, action.item]));
+        localStorage.setItem(
+          "favorites",
+          JSON.stringify([...favorites, action.item])
+        );
         return [...favorites, action.item];
       }
       case "remove": {
         console.log("removed");
-        break;
+        favorites = favorites.filter(
+          (item) => item.title !== action.item.title && item
+        );
+        console.log(favorites);
+        localStorage.setItem("favorites", JSON.stringify(favorites));
+        return favorites;
       }
     }
   }
 
   const [favorites, dispatch] = useReducer(
     favoriteReducer,
-    JSON.parse(localStorage.getItem("favorites") || [])
+    // []
+    JSON.parse(localStorage.getItem("favorites")) || []
   );
-
-  //we wanto to add the item in favorite when we click the heart button in result page.
-  const handleFavoriteButton = (item) => {
+  const handleFavoriteButton = (type, item)=>{
     dispatch({
-      type: "add",
-      item: item,
+      item:item,
+      type:type
     });
-  };
+  }
   const handleSearchSubmit = (e) => {
     e.preventDefault();
     navigate(`search/${value}`);
@@ -63,6 +70,7 @@ function App() {
               searchQuery={value}
               setItem={setItem}
               handleFavorite={handleFavoriteButton}
+              favorites={favorites}
             />
           }
         ></Route>
