@@ -76,12 +76,13 @@ function App() {
         ></Route>
         <Route
           path="/:name/:id"
-          element={<Item item={item} setItem={setItem} />}
+          element={<Item item={item} />}
         />
         <Route
           path="/favorites"
-          element={<Favorites items={favorites} />}
+          element={<Favorites setItem={setItem} items={favorites} />}
         ></Route>
+        <Route path="/favorites/:name" element={<Item item={item}/>}></Route>
         <Route path="*"></Route>
       </Routes>
       <Footer></Footer>
