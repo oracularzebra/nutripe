@@ -28,7 +28,7 @@ function App() {
       case "remove": {
         console.log("removed");
         favorites = favorites.filter(
-          (item) => item.title !== action.item.title && item
+          (item) => item.title !== action.item.title
         );
         console.log(favorites);
         localStorage.setItem("favorites", JSON.stringify(favorites));
