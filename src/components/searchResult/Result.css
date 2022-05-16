@@ -26,13 +26,17 @@
 .resultDiv > div > a {
   background-color: whitesmoke;
   padding-bottom: 20px;
+  display: grid;
   height: 100%;
   text-decoration: none;
   color: black;
 }
 .resultDiv > div > a > img {
   width: 15vw;
-  height: 100vh;
+  margin: auto;
+  left: 0;
+  right: 0;
+  position: relative;
   align-items: stretch;
   height: 30vh;
   border-radius: 15px;
