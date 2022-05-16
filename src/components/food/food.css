@@ -111,8 +111,8 @@
   order: 1;
   position: relative;
 }
-#ingredientList > li > input:checked +.strike::after {
-  content: ' ';
+#ingredientList > li > input:checked + .strike::after {
+  content: " ";
   position: absolute;
   top: 50%;
   left: 0;
@@ -121,8 +121,11 @@
   background: rgba(53, 38, 48, 0.474);
   animation: strike 1s linear 1 forwards;
 }
-@keyframes strike{
-  0%   { width : 0; }
-  100% { width: 100%; }
+@keyframes strike {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
 }
-
