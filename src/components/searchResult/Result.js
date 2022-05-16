@@ -100,17 +100,17 @@ const Result = ({ setItem, handleFavorite, favorites }) => {
                 <FavoriteBorderIcon
                   id="favoriteButton"
                   sx={favorites.map((favoriteItem) => {
-                    if(favoriteItem.title === item.title){
-                      return {color:'red'};
+                    if (favoriteItem.title === item.title) {
+                      return { color: "red" };
                     }
                   })}
                   onClick={(event) => {
-                    if(event.currentTarget.style.color === 'red'){
-                      event.currentTarget.style.color = 'black';
-                      handleFavorite('remove', item);
-                    }else{
-                      event.currentTarget.style.color = 'red';
-                      handleFavorite('add', item);
+                    if (event.currentTarget.style.color === "red") {
+                      event.currentTarget.style.color = "black";
+                      handleFavorite("remove", item);
+                    } else {
+                      event.currentTarget.style.color = "red";
+                      handleFavorite("add", item);
                     }
                   }}
                 ></FavoriteBorderIcon>
