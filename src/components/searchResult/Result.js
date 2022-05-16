@@ -7,9 +7,9 @@ import getPhoto from "../../apiRequest/getPhoto";
 import { Link } from "react-router-dom";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import { ListItemSecondaryAction } from "@mui/material";
 
-const Result = ({ setItem, handleFavorite }) => {
-  
+const Result = ({ setItem, handleFavorite, favorites }) => {
   const [recipe, setRecipe] = useState({});
   const { name } = useParams();
   const [recipeLoaded, setRecipeLoaded] = useState(false);
@@ -98,7 +98,26 @@ const Result = ({ setItem, handleFavorite }) => {
                   }}
                 ></ThumbUpIcon>
                 <FavoriteBorderIcon
-                  onClick={() => handleFavorite(item)}
+                  id="favoriteButton"
+                  sx={favorites.filter(
+                    (favoriteItem) => favoriteItem.title === item.title
+                  )}
+                  onClick={() => {
+                    const favoriteButtons = document.querySelectorAll(
+                      "#favoriteButton"
+                    );
+                    favoriteButtons.forEach((button) => {
+                      button.addEventListener("click", () => {
+                        if (button.style.color === "red") {
+                          button.style.color = "black";
+                          handleFavorite(item, 'add');
+                        } else {
+                          button.style.color = "red";
+                          handleFavorite(item, 'remove');
+                        }
+                      });
+                    });
+                  }}
                 ></FavoriteBorderIcon>
               </div>
             </div>
