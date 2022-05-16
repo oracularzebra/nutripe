@@ -7,7 +7,6 @@ import getPhoto from "../../apiRequest/getPhoto";
 import { Link } from "react-router-dom";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import { ListItemSecondaryAction } from "@mui/material";
 
 const Result = ({ setItem, handleFavorite, favorites }) => {
   const [recipe, setRecipe] = useState({});
