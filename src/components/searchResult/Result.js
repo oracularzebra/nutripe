@@ -8,7 +8,8 @@ import { Link } from "react-router-dom";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 
-const Result = ({ setItem }) => {
+const Result = ({ setItem, handleFavorite }) => {
+  
   const [recipe, setRecipe] = useState({});
   const { name } = useParams();
   const [recipeLoaded, setRecipeLoaded] = useState(false);
@@ -73,7 +74,11 @@ const Result = ({ setItem }) => {
               >
                 {imagesLoaded && (
                   <img
-                    src={photos[index].photos[0] ? photos[index].photos[0].src.large : 'https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F9%2F2021%2F07%2F13%2FUltimate-Veggie-Burgers-FT-Recipe-0821.jpg'}
+                    src={
+                      photos[index].photos[0]
+                        ? photos[index].photos[0].src.large
+                        : "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F9%2F2021%2F07%2F13%2FUltimate-Veggie-Burgers-FT-Recipe-0821.jpg"
+                    }
                     alt={photos[index].photos.alt}
                   />
                 )}
@@ -83,7 +88,7 @@ const Result = ({ setItem }) => {
                   100
                 )}...`}</p>
               </Link>
-              <div className='resultItemNav'>
+              <div className="resultItemNav">
                 <ThumbUpIcon
                   sx={{
                     color: "#5e95f2",
@@ -92,7 +97,9 @@ const Result = ({ setItem }) => {
                     console.log("clicked");
                   }}
                 ></ThumbUpIcon>
-                <FavoriteBorderIcon></FavoriteBorderIcon>
+                <FavoriteBorderIcon
+                  onClick={() => handleFavorite(item)}
+                ></FavoriteBorderIcon>
               </div>
             </div>
           );
