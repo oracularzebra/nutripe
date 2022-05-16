@@ -1,15 +1,16 @@
 import "./header.css";
 import React from "react";
 import { useRef } from "react";
+import {Link} from 'react-router-dom'
 
 const Header = ({ handleSubmit, value, setValue }) => {
   const ref = useRef(null);
 
   return (
     <div className="headerDiv">
-      <a href="/" className="linkToHome">
+      <Link to="/" className="linkToHome">
         <h2>Nutripe</h2>
-      </a>
+      </Link>
       <form onSubmit={handleSubmit}>
         <label>
           <input
