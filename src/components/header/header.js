@@ -7,7 +7,9 @@ const Header = ({ handleSubmit, value, setValue }) => {
 
   return (
     <div className="headerDiv">
-      <h2>Nutripe</h2>
+      <a href="/" className="linkToHome">
+        <h2>Nutripe</h2>
+      </a>
       <form onSubmit={handleSubmit}>
         <label>
           <input
