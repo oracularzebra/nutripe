@@ -80,7 +80,7 @@ function App() {
         />
         <Route
           path="/favorites"
-          element={<Favorites setItem={setItem} items={favorites} />}
+          element={<Favorites setItem={setItem} items={favorites} handleRemoveFavorite={handleFavoriteButton}/>}
         ></Route>
         <Route path="/favorites/:name" element={<Item item={item}/>}></Route>
         <Route path="*"></Route>
