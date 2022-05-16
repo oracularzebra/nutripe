@@ -9,8 +9,13 @@ async function getPhoto(query){
         },
     });
 
-    const response = await data.json();
-    return response;
+    if(data.ok){
+        const response = await data.json();
+        return response;
+    }
+    else{
+        console.log('Limit exceeded')
+    }
 }
 
 export default getPhoto;
