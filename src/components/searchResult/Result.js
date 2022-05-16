@@ -99,24 +99,19 @@ const Result = ({ setItem, handleFavorite, favorites }) => {
                 ></ThumbUpIcon>
                 <FavoriteBorderIcon
                   id="favoriteButton"
-                  sx={favorites.filter(
-                    (favoriteItem) => favoriteItem.title === item.title
-                  )}
-                  onClick={() => {
-                    const favoriteButtons = document.querySelectorAll(
-                      "#favoriteButton"
-                    );
-                    favoriteButtons.forEach((button) => {
-                      button.addEventListener("click", () => {
-                        if (button.style.color === "red") {
-                          button.style.color = "black";
-                          handleFavorite(item, 'add');
-                        } else {
-                          button.style.color = "red";
-                          handleFavorite(item, 'remove');
-                        }
-                      });
-                    });
+                  sx={favorites.map((favoriteItem) => {
+                    if(favoriteItem.title === item.title){
+                      return {color:'red'};
+                    }
+                  })}
+                  onClick={(event) => {
+                    if(event.currentTarget.style.color === 'red'){
+                      event.currentTarget.style.color = 'black';
+                      handleFavorite('remove', item);
+                    }else{
+                      event.currentTarget.style.color = 'red';
+                      handleFavorite('add', item);
+                    }
                   }}
                 ></FavoriteBorderIcon>
               </div>
