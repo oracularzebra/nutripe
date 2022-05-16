@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import getPhoto from "../../apiRequest/getPhoto";
 import "./favorite.css";
 import { Link } from "react-router-dom";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 
-const Favorites = ({ items, setItem }) => {
+const Favorites = ({ items, setItem, handleRemoveFavorite }) => {
   const [images, setImages] = useState([]);
   const [imagesLoaded, setImagesLoaded] = useState(false);
 
@@ -14,7 +15,6 @@ const Favorites = ({ items, setItem }) => {
       });
       Promise.all(promises)
         .then((imageData) => {
-          console.log(imageData);
           if (imageData[0].error === "Rate limit exceeded") {
             setImagesLoaded(false);
           } else {
@@ -31,7 +31,7 @@ const Favorites = ({ items, setItem }) => {
 
   return (
     <div>
-      <div className="favoriteDiv">
+      <div className="resultDiv">
         {items.map((item, index) => {
           return (
             <div key={index}>
@@ -66,6 +66,16 @@ const Favorites = ({ items, setItem }) => {
                 )}...`}</p>
                 <div className="resultItemNav"></div>
               </Link>
+              <FavoriteBorderIcon
+                sx={{
+                  color: "red",
+                }}
+                id="favoriteButton1"
+                onClick={(event) => {
+                  // event.currentTarget.style.color = "black";
+                  handleRemoveFavorite("remove", item);
+                }}
+              ></FavoriteBorderIcon>
             </div>
           );
         })}
