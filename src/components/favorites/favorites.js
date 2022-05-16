@@ -3,10 +3,9 @@ import getPhoto from "../../apiRequest/getPhoto";
 import { Link } from "react-router-dom";
 
 const Favorites = ({ items }) => {
-  console.log(items);
+
   const [images, setImages] = useState([]);
   const [imagesLoaded, setImagesLoaded] = useState(false);
-
   const recipeLoaded = true;
 
   useEffect(() => {
