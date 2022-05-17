@@ -1,17 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import getPhoto from "../../apiRequest/getPhoto";
 import "./favorite.css";
 import { Link } from "react-router-dom";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import { FoodContext } from "../context/foodContext";
 
-const Favorites = ({ items, setItem, handleRemoveFavorite }) => {
+const Favorites = () => {
+
+  const { favorites, setItem, handleFavoriteButton } = useContext(FoodContext);
   const [images, setImages] = useState([]);
   const [imagesLoaded, setImagesLoaded] = useState(false);
 
   useEffect(() => {
     const getImageData = async () => {
-      const promises = Array.from({ length: items.length }).map((_, i) => {
-        return getPhoto(items[i].title);
+      const promises = Array.from({ length: favorites.length }).map((_, i) => {
+        return getPhoto(favorites[i].title);
       });
       Promise.all(promises)
         .then((imageData) => {
@@ -27,12 +30,12 @@ const Favorites = ({ items, setItem, handleRemoveFavorite }) => {
         });
     };
     getImageData();
-  }, [items]);
+  }, [favorites]);
 
   return (
     <div>
       <div className="resultDiv">
-        {items.map((item, index) => {
+        {favorites.map((item, index) => {
           return (
             <div key={index}>
               <Link
@@ -73,7 +76,7 @@ const Favorites = ({ items, setItem, handleRemoveFavorite }) => {
                 id="favoriteButton1"
                 onClick={(event) => {
                   // event.currentTarget.style.color = "black";
-                  handleRemoveFavorite("remove", item);
+                  handleFavoriteButton("remove", item);
                 }}
               ></FavoriteBorderIcon>
             </div>

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import React from "react";
 import getRecipes from "../../apiRequest/getRecipes";
@@ -7,8 +7,11 @@ import getPhoto from "../../apiRequest/getPhoto";
 import { Link } from "react-router-dom";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import { FoodContext } from "../context/foodContext";
 
-const Result = ({ setItem, handleFavorite, favorites }) => {
+const Result = () => {
+
+  const { setItem, handleFavoriteButton, favorites } = useContext(FoodContext);
   const [recipe, setRecipe] = useState({});
   const { name } = useParams();
   const [recipeLoaded, setRecipeLoaded] = useState(false);
@@ -106,10 +109,10 @@ const Result = ({ setItem, handleFavorite, favorites }) => {
                   onClick={(event) => {
                     if (event.currentTarget.style.color === "red") {
                       event.currentTarget.style.color = "black";
-                      handleFavorite("remove", item);
+                      handleFavoriteButton("remove", item);
                     } else {
                       event.currentTarget.style.color = "red";
-                      handleFavorite("add", item);
+                      handleFavoriteButton("add", item);
                     }
                   }}
                 ></FavoriteBorderIcon>

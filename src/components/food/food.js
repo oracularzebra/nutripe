@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import getNutri from "../../apiRequest/getNutritionalInfo";
 import "./food.css";
 import React from "react";
@@ -12,8 +12,11 @@ import PotassiumIcon from "../../icons/icons8-potassium-64.png";
 import ProteinIcon from "../../icons/icons8-protein-50.png";
 import SodiumIcon from "../../icons/icons8-sodium-50.png";
 import CalorieIcon from "../../icons/icons8-calories-50.png";
+import { FoodContext } from "../context/foodContext";
 
-const Item = ({ item }) => {
+const Item = () => {
+
+  const { item } = useContext(FoodContext);
   const showItem =
     Object.keys(item).length === 0
       ? JSON.parse(localStorage.getItem("item"))

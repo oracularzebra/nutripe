@@ -1,17 +1,18 @@
 import "./header.css";
-import React from "react";
+import React, { useContext } from "react";
 import { useRef } from "react";
 import {Link} from 'react-router-dom'
+import { FoodContext } from "../context/foodContext";
 
-const Header = ({ handleSubmit, value, setValue }) => {
+const Header = () => {
   const ref = useRef(null);
-
+  const { handleSearchSubmit, value, setValue } = useContext(FoodContext);
   return (
     <div className="headerDiv">
       <Link to="/" className="linkToHome">
         <h2>Nutripe</h2>
       </Link>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSearchSubmit}>
         <label>
           <input
             className="searchInput"

@@ -11,83 +11,17 @@ import Favorites from "./components/favorites/favorites";
 import ContextProvider from "./components/context/foodContext";
 
 function App() {
-  const navigate = useNavigate();
-  const [value, setValue] = useState("");
-  const [item, setItem] = useState({});
-
-  //favorites is a stateful value, and dispatch is a function for updating the value.
-  //favoriteReducer performs all the crud operations.
-  function favoriteReducer(favorites, action) {
-    switch (action.type) {
-      case "add": {
-        localStorage.setItem(
-          "favorites",
-          JSON.stringify([...favorites, action.item])
-        );
-        return [...favorites, action.item];
-      }
-      case "remove": {
-        console.log("removed");
-        favorites = favorites.filter(
-          (item) => item.title !== action.item.title
-        );
-        console.log(favorites);
-        localStorage.setItem("favorites", JSON.stringify(favorites));
-        return favorites;
-      }
-    }
-  }
-
-  const [favorites, dispatch] = useReducer(
-    favoriteReducer,
-    // []
-    JSON.parse(localStorage.getItem("favorites")) || []
-  );
-  const handleFavoriteButton = (type, item) => {
-    dispatch({
-      item: item,
-      type: type,
-    });
-  };
-  const handleSearchSubmit = (e) => {
-    e.preventDefault();
-    navigate(`search/${value}`);
-    setValue("");
-  };
 
   return (
     <div className="App">
       <ContextProvider>
-        <Header
-          handleSubmit={handleSearchSubmit}
-          value={value}
-          setValue={setValue}
-        ></Header>
+        <Header></Header>
         <Routes>
           <Route path="/" element={<Main />}></Route>
-          <Route
-            path="/search/:name"
-            element={
-              <Result
-                searchQuery={value}
-                setItem={setItem}
-                handleFavorite={handleFavoriteButton}
-                favorites={favorites}
-              />
-            }
-          ></Route>
-          <Route path="/:name/:id" element={<Item item={item} />} />
-          <Route
-            path="/favorites"
-            element={
-              <Favorites
-                setItem={setItem}
-                items={favorites}
-                handleRemoveFavorite={handleFavoriteButton}
-              />
-            }
-          ></Route>
-          <Route path="/favorites/:name" element={<Item item={item} />}></Route>
+          <Route path="/search/:name" element={<Result />}></Route>
+          <Route path="/:name/:id" element={<Item/>} />
+          <Route path="/favorites" element={<Favorites />}></Route>
+          <Route path="/favorites/:name" element={<Item/>}></Route>
           <Route path="*"></Route>
         </Routes>
       </ContextProvider>

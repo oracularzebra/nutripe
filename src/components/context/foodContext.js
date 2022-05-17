@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router";
 
 
-const FoodContext = createContext({});
+export const FoodContext = createContext({});
 
 const ContextProvider = ({ children }) => {
 
