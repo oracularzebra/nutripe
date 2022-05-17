@@ -8,6 +8,7 @@ import Result from "./components/searchResult/Result";
 import Item from "./components/food/food";
 import Main from "./components/homePage/home";
 import Favorites from "./components/favorites/favorites";
+import ContextProvider from "./components/context/foodContext";
 
 function App() {
   const navigate = useNavigate();
@@ -42,12 +43,12 @@ function App() {
     // []
     JSON.parse(localStorage.getItem("favorites")) || []
   );
-  const handleFavoriteButton = (type, item)=>{
+  const handleFavoriteButton = (type, item) => {
     dispatch({
-      item:item,
-      type:type
+      item: item,
+      type: type,
     });
-  }
+  };
   const handleSearchSubmit = (e) => {
     e.preventDefault();
     navigate(`search/${value}`);
@@ -56,35 +57,41 @@ function App() {
 
   return (
     <div className="App">
-      <Header
-        handleSubmit={handleSearchSubmit}
-        value={value}
-        setValue={setValue}
-      ></Header>
-      <Routes>
-        <Route path="/" element={<Main />}></Route>
-        <Route
-          path="/search/:name"
-          element={
-            <Result
-              searchQuery={value}
-              setItem={setItem}
-              handleFavorite={handleFavoriteButton}
-              favorites={favorites}
-            />
-          }
-        ></Route>
-        <Route
-          path="/:name/:id"
-          element={<Item item={item} />}
-        />
-        <Route
-          path="/favorites"
-          element={<Favorites setItem={setItem} items={favorites} handleRemoveFavorite={handleFavoriteButton}/>}
-        ></Route>
-        <Route path="/favorites/:name" element={<Item item={item}/>}></Route>
-        <Route path="*"></Route>
-      </Routes>
+      <ContextProvider>
+        <Header
+          handleSubmit={handleSearchSubmit}
+          value={value}
+          setValue={setValue}
+        ></Header>
+        <Routes>
+          <Route path="/" element={<Main />}></Route>
+          <Route
+            path="/search/:name"
+            element={
+              <Result
+                searchQuery={value}
+                setItem={setItem}
+                handleFavorite={handleFavoriteButton}
+                favorites={favorites}
+              />
+            }
+          ></Route>
+          <Route path="/:name/:id" element={<Item item={item} />} />
+          <Route
+            path="/favorites"
+            element={
+              <Favorites
+                setItem={setItem}
+                items={favorites}
+                handleRemoveFavorite={handleFavoriteButton}
+              />
+            }
+          ></Route>
+          <Route path="/favorites/:name" element={<Item item={item} />}></Route>
+          <Route path="*"></Route>
+        </Routes>
+      </ContextProvider>
+
       <Footer></Footer>
     </div>
   );
