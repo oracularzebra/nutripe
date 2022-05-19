@@ -1,15 +1,3 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-.App {
-  display: grid;
-  justify-content: space-between;
-  align-content: space-between;
-  width: 100%;
-  flex-direction: column;
-  height: 100vh;
-  overflow-y: scroll;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

@@ -5,7 +5,7 @@ import { useNavigate } from "react-router";
 const Main = () => {
   const navigate = useNavigate();
   return (
-    <div className="mainPage">
+    <div className="bg-orange-900">
       <div className="selectedImages"></div>
       <div className="menu">
         <button id="favouritesButton" onClick={()=>navigate('favorites')}>Favourites</button>

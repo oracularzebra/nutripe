@@ -11,7 +11,7 @@ import ContextProvider from "./components/context/foodContext";
 function App() {
 
   return (
-    <div className="App">
+    <div className="bg-yellow-500 grid justify-end">
       <ContextProvider>
         <Header></Header>
         <Routes>
