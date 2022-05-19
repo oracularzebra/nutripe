@@ -1,8 +1,8 @@
-{ 
+{
   "name": "eathealthy",
   "version": "0.1.0",
   "private": true,
-  "dependencies": { 
+  "dependencies": {
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
     "@material-ui/core": "^4.12.4",
@@ -23,7 +23,10 @@
     "web-vitals": "^2.1.4"
   },
   "devDependencies": {
-    "react-error-overlay": "6.0.9"
+    "autoprefixer": "^10.4.7",
+    "postcss": "^8.4.14",
+    "react-error-overlay": "6.0.9",
+    "tailwindcss": "^3.0.24"
   },
   "scripts": {
     "start": "react-scripts start",
