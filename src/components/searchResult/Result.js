@@ -54,12 +54,13 @@ const Result = () => {
   }, [name]);
 
   return (
-    <div className="resultDiv">
+    <div className="grid grid-cols-1 gap-4 m-2 md:grid-cols-5 md:m-1 md:mt-0 justify-center bg-slate-200">
       {recipeLoaded ? (
         recipe.map((item, index) => {
           return (
-            <div key={index}>
+            <div className="grid content-between items-center rounded-md border-2 border-blue-500" key={index}>
               <Link
+                className=""
                 to={`/${name}/${index}`}
                 onClick={() => {
                   if (imagesLoaded) {
@@ -75,6 +76,7 @@ const Result = () => {
               >
                 {imagesLoaded && (
                   <img
+                    className="h-96 object-cover w-screen md:h-40" 
                     src={
                       photos[index].photos[0]
                         ? photos[index].photos[0].src.large
@@ -83,13 +85,13 @@ const Result = () => {
                     alt={photos[index].photos.alt}
                   />
                 )}
-                <h5 id="itemHeading">{item.title}</h5>
-                <p id="ingredientsOverview">{`${item.ingredients.substring(
+                <h5 className="text-center font-serif font-bold" id="itemHeading">{item.title}</h5>
+                <p className="text-xs text-center font-light" id="ingredientsOverview">{`${item.ingredients.substring(
                   0,
                   100
                 )}...`}</p>
               </Link>
-              <div className="resultItemNav">
+              <div className="sticky bottom-0 right-0 m-auto">
                 <ThumbUpIcon
                   sx={{
                     color: "#5e95f2",
