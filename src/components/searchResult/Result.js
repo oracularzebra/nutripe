@@ -58,7 +58,7 @@ const Result = () => {
       {recipeLoaded ? (
         recipe.map((item, index) => {
           return (
-            <div className="grid content-between items-center rounded-md border-2 border-blue-500" key={index}>
+            <div className="grid content-between items-center rounded-md border-2 border-blue-200" key={index}>
               <Link
                 className=""
                 to={`/${name}/${index}`}
