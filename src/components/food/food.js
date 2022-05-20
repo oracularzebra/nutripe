@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState } from "react";
 import getNutri from "../../apiRequest/getNutritionalInfo";
-import "./food.css";
 import React from "react";
 import SugarIcon from "../../icons/icons8-sugar-48.png";
 import CarbohydratesIcon from "../../icons/icons8-carbohydrates-50.png";

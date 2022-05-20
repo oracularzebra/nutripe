@@ -11,7 +11,7 @@ import ContextProvider from "./components/context/foodContext";
 function App() {
 
   return (
-    <div className="bg-yellow-500 grid justify-end">
+    <div className="grid content-between w-screen h-screen">
       <ContextProvider>
         <Header></Header>
         <Routes>

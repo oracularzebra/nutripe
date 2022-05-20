@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
 import getPhoto from "../../apiRequest/getPhoto";
-import "./favorite.css";
 import { Link } from "react-router-dom";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { FoodContext } from "../context/foodContext";
