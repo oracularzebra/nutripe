@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
 import getPhoto from "../../apiRequest/getPhoto";
-import "./favorite.css";
 import { Link } from "react-router-dom";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { FoodContext } from "../context/foodContext";
@@ -34,10 +33,10 @@ const Favorites = () => {
 
   return (
     <div>
-      <div className="resultDiv">
+      <div className="grid grid-cols-1 gap-4 m-2 md:grid-cols-5 md:m-1 md:mt-0 justify-center bg-slate-200">
         {favorites.map((item, index) => {
           return (
-            <div key={index}>
+            <div className="grid content-between justify-center items-center rounded-md border-2 border-blue-200" key={index}>
               <Link
                 to={`${item.title}`}
                 onClick={() => {
@@ -54,6 +53,7 @@ const Favorites = () => {
               >
                 {imagesLoaded && (
                   <img
+                    className="h-96 object-cover w-screen md:h-40"
                     src={
                       images[index].photos[0]
                         ? images[index].photos[0].src.large
@@ -62,14 +62,15 @@ const Favorites = () => {
                     alt={images[index].photos.alt}
                   />
                 )}
-                <h5 id="itemHeading">{item.title}</h5>
-                <p id="ingredientsOverview">{`${item.ingredients.substring(
+                <h5 className="text-center font-serif font-bold" id="itemHeading">{item.title}</h5>
+                <p className="text-xs text-center font-light">{`${item.ingredients.substring(
                   0,
                   100
                 )}...`}</p>
                 <div className="resultItemNav"></div>
               </Link>
               <FavoriteBorderIcon
+                className="m-auto"
                 sx={{
                   color: "red",
                 }}
