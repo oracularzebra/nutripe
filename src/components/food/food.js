@@ -84,7 +84,7 @@ const Item = () => {
       {showItem.image ? (
         <img
           id="foodImage"
-          className="rounded-3xl md:w-[900px] md:m-auto object-cover md:h-[500px] left-0 top-0 shadow-md shadow-pink-200"
+          className="rounded-3xl md:w-[900px] m-auto md:m-auto object-cover md:h-[500px] left-0 top-0 shadow-md shadow-pink-200"
           src={showItem.image}
           alt={"An elephant should appear here"}
         />
