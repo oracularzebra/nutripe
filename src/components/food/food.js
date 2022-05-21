@@ -12,10 +12,9 @@ import ProteinIcon from "../../icons/icons8-protein-50.png";
 import SodiumIcon from "../../icons/icons8-sodium-50.png";
 import CalorieIcon from "../../icons/icons8-calories-50.png";
 import { FoodContext } from "../context/foodContext";
-import foodBacngroundImage from '../../background Images/WhatsApp Image 2022-05-20 at 11.30.12 PM.jpeg'
+import foodImage from '../../background Images/food.jpeg';
 
 const Item = () => {
-
   const { item } = useContext(FoodContext);
   const showItem =
     Object.keys(item).length === 0
@@ -80,10 +79,15 @@ const Item = () => {
   }, [item]);
 
   return (
-    <div style={{
-      backgroundImage: 'url()'
-    }} className="grid  bg-[#3d3c78] bg-gradient-to-t i">
-      <h2 className="text-center font-bold text-2xl m-4" id="foodTitle">{showItem.title}</h2>
+    <div 
+      style={{
+        backgroundImage: "url('../../background Images/food.jpeg')",
+      }}
+      className="grid bg-repeat-round"
+    >
+      <h2 className="text-center font-bold text-2xl m-4" id="foodTitle">
+        {showItem.title}
+      </h2>
       {showItem.image ? (
         <img
           id="foodImage"
@@ -98,7 +102,9 @@ const Item = () => {
         <ul className="flex flex-wrap justify-center items-center gap-1">
           <li className="flex flex-col items-center content-center">
             <img src={SugarIcon} alt="sugar" />
-            <h6 className="text-sm font-light">Sugar {nutrientsObj.sugar_g.toFixed(2)}g</h6>
+            <h6 className="text-sm font-light">
+              Sugar {nutrientsObj.sugar_g.toFixed(2)}g
+            </h6>
           </li>
           <li className="flex flex-col items-center content-center">
             <img src={CarbohydratesIcon} alt="carbohydrates" />
@@ -108,44 +114,71 @@ const Item = () => {
           </li>
           <li className="flex flex-col items-center content-center">
             <img src={CalorieIcon} alt="calories" />
-            <h6 className="text-sm font-light">Calories {nutrientsObj.calories.toFixed(2)}kcal</h6>
+            <h6 className="text-sm font-light">
+              Calories {nutrientsObj.calories.toFixed(2)}kcal
+            </h6>
           </li>
           <li className="flex flex-col items-center content-center">
             <img src={ProteinIcon} alt="protein" />
-            <h6 className="text-sm font-light">Protein {nutrientsObj.protein_g.toFixed(2)}g</h6>
+            <h6 className="text-sm font-light">
+              Protein {nutrientsObj.protein_g.toFixed(2)}g
+            </h6>
           </li>
           <li className="flex flex-col items-center content-center">
             <img src={FatIcon} alt="total fat" />
-            <h6 className="text-sm font-light">Total fat {nutrientsObj.fat_total_g.toFixed(2)}g</h6>
+            <h6 className="text-sm font-light">
+              Total fat {nutrientsObj.fat_total_g.toFixed(2)}g
+            </h6>
           </li>
           <li className="flex flex-col items-center content-center">
             <img src={FatSaturatedIcon} alt="saturated fat" />
-            <h6 className="text-sm font-light">Saturated fat {nutrientsObj.fat_saturated_g.toFixed(2)}g</h6>
+            <h6 className="text-sm font-light">
+              Saturated fat {nutrientsObj.fat_saturated_g.toFixed(2)}g
+            </h6>
           </li>
           <li className="flex flex-col items-center content-center">
             <img src={PotassiumIcon} alt="potassium" />
-            <h6 className="text-sm font-light">Potassium {nutrientsObj.potassium_mg.toFixed(2)}mg</h6>
+            <h6 className="text-sm font-light">
+              Potassium {nutrientsObj.potassium_mg.toFixed(2)}mg
+            </h6>
           </li>
           <li className="flex flex-col items-center content-center">
             <img src={SodiumIcon} alt="Sodium" />
-            <h6 className="text-sm font-light">Sodium {nutrientsObj.sodium_mg.toFixed(2)}mg</h6>
+            <h6 className="text-sm font-light">
+              Sodium {nutrientsObj.sodium_mg.toFixed(2)}mg
+            </h6>
           </li>
           <li className="flex flex-col items-center content-center">
             <img src={FibreIcon} alt="fiber" />
-            <h6 className="text-sm font-light">Fiber {nutrientsObj.fiber_g.toFixed(2)}g</h6>{" "}
+            <h6 className="text-sm font-light">
+              Fiber {nutrientsObj.fiber_g.toFixed(2)}g
+            </h6>{" "}
           </li>
           <li className="flex flex-col items-center content-center">
             <img src={CholestrolIcon} alt="Cholesterol" />
-            <h6 className="text-sm font-light">Cholesterol {nutrientsObj.cholesterol_mg.toFixed(2)}mg</h6>
+            <h6 className="text-sm font-light">
+              Cholesterol {nutrientsObj.cholesterol_mg.toFixed(2)}mg
+            </h6>
           </li>
         </ul>
       </div>
       <div className="grid">
-        <h4 className="text-xl font-bold m-auto" id="servingInfo">{showItem.servings}</h4>
-        <h3 className="text-xl font-normal m-auto" id="ingredientsRequiredHeading">Ingredients Required</h3>
+        <h4 className="text-xl font-bold m-auto" id="servingInfo">
+          {showItem.servings}
+        </h4>
+        <h3
+          className="text-xl font-normal m-auto"
+          id="ingredientsRequiredHeading"
+        >
+          Ingredients Required
+        </h3>
         <ul className="grid" id="ingredientList">
           {ingredientList.map((ingredient, index) => (
-            <li className="flex justify-between" id="ingredientListItem" key={index}>
+            <li
+              className="flex justify-between"
+              id="ingredientListItem"
+              key={index}
+            >
               <input className="scale-150 order-1" type="checkbox" />
               <p className="font-mono" id="ingredientListItem">
                 {ingredient.replace(";", " - ").replace(",", " - ")}
