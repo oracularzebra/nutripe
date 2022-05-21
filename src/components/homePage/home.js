@@ -1,34 +1,40 @@
-import { Wallpaper } from "@material-ui/icons";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
-import getPhoto from '../../apiRequest/getPhoto';
+import getPhoto from "../../apiRequest/getPhoto";
+import ImageList from "@mui/material/ImageList";
+import ImageListItem from "@mui/material/ImageListItem";
 
 const Main = () => {
-
-  const [wallPaper, setWallPaper] = useState('');
+  const [pictures, setPictures] = useState([]);
 
   useEffect(() => {
-    getPhoto('food', 20).then((imageData)=>{
-      return imageData.photos;
-    }).then((imageArray)=>{
-      const selectedWallPaper = imageArray[Math.floor(Math.random()*19)].src.landscape;
-      setWallPaper(selectedWallPaper);
-    })
+    getPhoto("food", 9)
+      .then((imageData) => {
+        return imageData.photos;
+      })
+      .then((imageArray) => {
+        console.log(imageArray);
+        setPictures(imageArray);
+      });
   }, []);
 
   const navigate = useNavigate();
   return (
     <div
-      style={
-        {
-          backgroundImage: `url('${wallPaper}')`,
-          backgroundSize:'cover'
-        }
-      }
-      className="grid bg-black justify-baseline w-auto h-screen row-start-2 row-end-3"
+      className="grid flex-wrap bg-black justify-around content-around w-auto h-screen row-start-2 row-end-3"
     >
-      {/* <img src="https://img.icons8.com/color/48/000000/yogurt.png" className="absolute m-auto left-0 right-0 top-0 bottom-0" /> */}
-      <div className="grid justify-start items-center gap-2">
+      <ImageList className="flex flex-wrap" cols={3}>
+        {pictures.map((picture) => (
+          <ImageListItem key={picture.id}>
+            <img
+              src={`${picture.src.medium}`}
+              alt={picture.alt}
+              // loading="lazy"
+            />
+          </ImageListItem>
+        ))}
+      </ImageList>
+      <div className="flex justify-around items-center gap-2">
         <button
           className="p-3 bg-blue-500"
           id="favouritesButton"
