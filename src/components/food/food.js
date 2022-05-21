@@ -12,6 +12,7 @@ import ProteinIcon from "../../icons/icons8-protein-50.png";
 import SodiumIcon from "../../icons/icons8-sodium-50.png";
 import CalorieIcon from "../../icons/icons8-calories-50.png";
 import { FoodContext } from "../context/foodContext";
+import foodBacngroundImage from '../../background Images/WhatsApp Image 2022-05-20 at 11.30.12 PM.jpeg'
 
 const Item = () => {
 
@@ -79,7 +80,9 @@ const Item = () => {
   }, [item]);
 
   return (
-    <div className="grid  bg-blue-100">
+    <div style={{
+      backgroundImage: 'url()'
+    }} className="grid  bg-[#3d3c78] bg-gradient-to-t i">
       <h2 className="text-center font-bold text-2xl m-4" id="foodTitle">{showItem.title}</h2>
       {showItem.image ? (
         <img
