@@ -8,7 +8,7 @@ const Main = () => {
   const [pictures, setPictures] = useState([]);
 
   useEffect(() => {
-    getPhoto("food", 9)
+    getPhoto("food", window.innerWidth > 768 ? 10 : 9)
       .then((imageData) => {
         return imageData.photos;
       })
@@ -23,7 +23,7 @@ const Main = () => {
     <div
       className="grid flex-wrap bg-black justify-around content-around w-auto h-screen row-start-2 row-end-3"
     >
-      <ImageList className="flex flex-wrap" cols={3}>
+      <ImageList cols={window.innerWidth > 768 ? 5 : 3}>
         {pictures.map((picture) => (
           <ImageListItem key={picture.id}>
             <img
