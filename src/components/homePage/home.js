@@ -4,11 +4,9 @@ import getPhoto from "../../apiRequest/getPhoto";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import ImageListItemBar from "@mui/material/ImageListItemBar";
-import ListSubheader from "@mui/material/ListSubheader";
 import IconButton from "@mui/material/IconButton";
-import InfoIcon from "@mui/icons-material/Info";
 
-const Main = ({setFoodItem}) => {
+const Main = () => {
   const [pictures, setPictures] = useState([]);
 
   useEffect(() => {
@@ -27,8 +25,20 @@ const Main = ({setFoodItem}) => {
     <div className="grid flex-wrap bg-black justify-around content-around w-auto h-screen row-start-2 row-end-3">
       <ImageList cols={window.innerWidth > 768 ? 2 : 1}>
         {pictures.map((picture) => (
-          <ImageListItem onClick={()=>{
-            console.log('clicked');
+          <ImageListItem onClick={() => {
+
+            if(picture.alt.toLowerCase().includes('pizza')){
+              console.log('clicked')
+              navigate(`/search/pizza`)
+            }else if(picture.alt.toLowerCase().includes('salad')){
+              navigate('/search/salad');
+            }else if(picture.alt.toLowerCase().includes('pasta')){
+              navigate('/search/pasta');
+            }
+            else{
+              const randomFood = ['momo', 'garlic bread', 'manchurian', 'burger', 'sweet potato', 'spring rolls', 'shephard pie']
+              navigate(`/search/${randomFood[Math.floor(Math.random()*(randomFood.length-1))]}`)
+            }
           }} key={picture.id}>
             <img src={`${picture.src.landscape}`} alt={picture.alt} />
             <ImageListItemBar
@@ -37,8 +47,7 @@ const Main = ({setFoodItem}) => {
                 <IconButton
                   sx={{ color: "rgba(255, 255, 255, 0.54)" }}
                   aria-label={`info about ${picture.alt}`}
-                >
-                </IconButton>
+                ></IconButton>
               }
             />
           </ImageListItem>
