@@ -17,6 +17,7 @@ import { ImageList } from "@mui/material";
 import { ImageListItem } from "@mui/material";
 import { Box } from "@material-ui/core";
 import { LinearProgress } from "@mui/material";
+import '../food/food.css';
 
 const Item = () => {
 
@@ -309,7 +310,7 @@ const Item = () => {
               id="ingredientListItem"
               key={index}
             >
-              <input className="scale-150 mr-2 order-1" type="checkbox" />
+              <input id="ingredientListItemCheckbox" className="scale-150 mr-2 order-1" type="checkbox" />
               <p className="font-mono" id="ingredientListItemText">
                 {ingredient.replace(";", " - ").replace(",", " - ")}
               </p>
