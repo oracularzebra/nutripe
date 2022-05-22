@@ -12,7 +12,6 @@ import ProteinIcon from "../../icons/icons8-protein-50.png";
 import SodiumIcon from "../../icons/icons8-sodium-50.png";
 import CalorieIcon from "../../icons/icons8-calories-50.png";
 import { FoodContext } from "../context/foodContext";
-import foodImage from '../../background Images/food.jpeg';
 
 const Item = () => {
   const { item } = useContext(FoodContext);
