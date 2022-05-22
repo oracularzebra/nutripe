@@ -28,6 +28,9 @@ const Footer = () => {
             All the icons are from&nbsp;
             <a className="font-bold" href="https://icons8.com/">icons8</a>
           </li>
+          <li>
+            ImageList component of <b>materialUi</b> is used in home and food page.
+          </li>
         </ul>
       </div>
     </div>
