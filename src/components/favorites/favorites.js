@@ -94,18 +94,13 @@ const Favorites = () => {
           })
         ) : (
           <Box
-            sx={{
+            style={{
               backgroundColor: "white",
-              width: "100vw",
-              height: '100vh',
               display: "grid",
-              margin: 'auto',
               justifyContent: "center",
             }}
           >
-            <CircularProgress
-              sx={{ display: "grid", justifyContent: "center" }}
-            />
+            <CircularProgress />
           </Box>
         )}
       </div>
