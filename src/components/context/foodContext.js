@@ -3,11 +3,9 @@ import React, { useReducer } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router";
 
-
 export const FoodContext = createContext({});
 
 const ContextProvider = ({ children }) => {
-
   const navigate = useNavigate();
   const [value, setValue] = useState("");
   const [item, setItem] = useState({});
@@ -37,7 +35,6 @@ const ContextProvider = ({ children }) => {
 
   const [favorites, dispatch] = useReducer(
     favoriteReducer,
-    // []
     JSON.parse(localStorage.getItem("favorites")) || []
   );
   const handleFavoriteButton = (type, item) => {
