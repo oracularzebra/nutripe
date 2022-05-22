@@ -43,3 +43,6 @@
       For all the food item images
    * ##### Material Ui
       For home page food items alignment and loading in result page and loading nutritional value loading.
+
+### Hosting
+   The project was hosted on cloudfare pages. Here is the [link](https://nutripe.pages.dev/) 
