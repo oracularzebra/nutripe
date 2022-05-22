@@ -186,8 +186,8 @@ const Item = () => {
             </li>
           ))}
         </ul>
-        <h3>Instructions</h3>
-        <span>{showItem.instructions}</span>
+        <h3 className="font-bold text-2xl font-mono text-center">Instructions</h3>
+        <span className="font-light">{showItem.instructions}</span>
       </div>
       <br />
     </div>
