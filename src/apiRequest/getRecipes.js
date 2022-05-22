@@ -19,7 +19,7 @@ const getRecipesFromApiNinjas = async (food) => {
   }
 };
 const getRecipesFromRecipesApi = async (food) => {
-  const options = {
+  const options = { 
     method: "GET",
     url: "https://recipesapi2.p.rapidapi.com/recipes/tomato%20soup",
     params: { maxRecipes: "10" },
