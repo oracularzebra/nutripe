@@ -12,8 +12,13 @@ import ProteinIcon from "../../icons/icons8-protein-50.png";
 import SodiumIcon from "../../icons/icons8-sodium-50.png";
 import CalorieIcon from "../../icons/icons8-calories-50.png";
 import { FoodContext } from "../context/foodContext";
+import getPhoto from "../../apiRequest/getPhoto";
+import { ImageList } from "@mui/material";
+import { ImageListItem } from "@mui/material";
 
 const Item = () => {
+  const [pictures, setPictures] = useState([]);
+  const [picturesLoaded, setPicturesLoaded] = useState(false);
   const { item } = useContext(FoodContext);
   const showItem =
     Object.keys(item).length === 0
@@ -35,6 +40,12 @@ const Item = () => {
   });
 
   useEffect(() => {
+    setPicturesLoaded(false);
+    getPhoto(showItem.title, 6).then((response) => {
+      console.log(response.photos);
+      setPictures(response.photos);
+      setPicturesLoaded(true);
+    });
     const promises = Array.from({ length: 10 }).map((_, index) => {
       return getNutri(ingredientList[index]);
     });
@@ -74,11 +85,12 @@ const Item = () => {
   useEffect(() => {
     if (Object.keys(item).length) {
       localStorage.setItem("item", JSON.stringify(item));
+      setNutrientsObj({});
     }
   }, [item]);
 
   return (
-    <div 
+    <div
       style={{
         backgroundImage: "url('../../background Images/food.jpeg')",
       }}
@@ -87,76 +99,91 @@ const Item = () => {
       <h2 className="text-center font-bold text-2xl m-4" id="foodTitle">
         {showItem.title}
       </h2>
-      {showItem.image ? (
-        <img
-          id="foodImage"
-          className="rounded-3xl md:w-[900px] m-auto md:m-auto object-cover md:h-[500px] left-0 top-0 shadow-md shadow-pink-200"
-          src={showItem.image}
-          alt={"An elephant should appear here"}
-        />
-      ) : (
-        <h2 className="photosNotLoaded">pexel's limit exceeded😑</h2>
+      {picturesLoaded && (
+        <ImageList
+          sx={{ 
+            margin: "auto",
+            width: "80vw",
+            height: '40vh',
+            borderRadius: '5px',
+            boxShadow: '4px 4px 4px grey'
+           }}
+          variant="quilted"
+          cols={4}
+          rowHeight={121}
+        >
+          {pictures.map((item) => (
+            <ImageListItem key={item.id} cols={2} rows={3}>
+              <img
+                className="flex-row flex-wrap overflow-hidden"
+                src={item.src.portrait}
+                alt={item.title}
+                loading="lazy"
+              />
+            </ImageListItem>
+          ))}
+        </ImageList>
       )}
       <div>
         <ul className="flex flex-wrap justify-center items-center gap-1">
           <li className="flex flex-col items-center content-center">
             <img src={SugarIcon} alt="sugar" />
             <h6 className="text-sm font-light">
-              Sugar {nutrientsObj.sugar_g.toFixed(2)}g
+              Sugar {nutrientsObj.sugar_g ? nutrientsObj.sugar_g.toFixed(2)+'g' : 'Info Not available'}
             </h6>
           </li>
           <li className="flex flex-col items-center content-center">
             <img src={CarbohydratesIcon} alt="carbohydrates" />
             <h6 className="text-sm font-light">
-              Carbohydrates {nutrientsObj.carbohydrates_total_g.toFixed(2)}g
+              Carbohydrates {nutrientsObj.carbohydrates_total_g ? nutrientsObj.carbohydrates_total_g.toFixed(2)+'g': 'Info not available'}
             </h6>
           </li>
           <li className="flex flex-col items-center content-center">
             <img src={CalorieIcon} alt="calories" />
             <h6 className="text-sm font-light">
-              Calories {nutrientsObj.calories.toFixed(2)}kcal
+              Calories {nutrientsObj.calories ?nutrientsObj.calories.toFixed(2)+'kcal' : 'Info not available'}
             </h6>
           </li>
           <li className="flex flex-col items-center content-center">
             <img src={ProteinIcon} alt="protein" />
             <h6 className="text-sm font-light">
-              Protein {nutrientsObj.protein_g.toFixed(2)}g
+              Protein {nutrientsObj.protein_g ? nutrientsObj.protein_g.toFixed(2)+'g' : 'Info not available'}
             </h6>
           </li>
           <li className="flex flex-col items-center content-center">
             <img src={FatIcon} alt="total fat" />
             <h6 className="text-sm font-light">
-              Total fat {nutrientsObj.fat_total_g.toFixed(2)}g
+              Total fat {nutrientsObj.fat_total_g ? nutrientsObj.fat_total_g.toFixed(2)+'g' : 'Info not available'}
             </h6>
           </li>
           <li className="flex flex-col items-center content-center">
             <img src={FatSaturatedIcon} alt="saturated fat" />
             <h6 className="text-sm font-light">
-              Saturated fat {nutrientsObj.fat_saturated_g.toFixed(2)}g
+              Saturated fat {nutrientsObj.fat_saturated_g ? nutrientsObj.fat_saturated_g.toFixed(2)+'g' : 'Info not available'}
             </h6>
           </li>
           <li className="flex flex-col items-center content-center">
             <img src={PotassiumIcon} alt="potassium" />
             <h6 className="text-sm font-light">
-              Potassium {nutrientsObj.potassium_mg.toFixed(2)}mg
+              Potassium {nutrientsObj.potassium_mg ? nutrientsObj.potassium_mg.toFixed(2)+'mg' : 'Info not available'}
             </h6>
           </li>
           <li className="flex flex-col items-center content-center">
             <img src={SodiumIcon} alt="Sodium" />
             <h6 className="text-sm font-light">
-              Sodium {nutrientsObj.sodium_mg.toFixed(2)}mg
+              Sodium {nutrientsObj.sodium_mg ? nutrientsObj.sodium_mg.toFixed(2)+'mg' : 'Info not available'}
             </h6>
           </li>
           <li className="flex flex-col items-center content-center">
             <img src={FibreIcon} alt="fiber" />
             <h6 className="text-sm font-light">
-              Fiber {nutrientsObj.fiber_g.toFixed(2)}g
+              Fiber {nutrientsObj.fiber_g?nutrientsObj.fiber_g.toFixed(2)+'g' :'Info not available'}
             </h6>{" "}
           </li>
           <li className="flex flex-col items-center content-center">
             <img src={CholestrolIcon} alt="Cholesterol" />
             <h6 className="text-sm font-light">
-              Cholesterol {nutrientsObj.cholesterol_mg.toFixed(2)}mg
+              Cholesterol {nutrientsObj.cholesterol_mg?nutrientsObj.cholesterol_mg.toFixed(2)+"mg": 'Info not available'}
             </h6>
           </li>
         </ul>
@@ -185,7 +212,9 @@ const Item = () => {
             </li>
           ))}
         </ul>
-        <h3 className="font-bold text-2xl font-mono text-center">Instructions</h3>
+        <h3 className="font-bold text-2xl font-mono text-center">
+          Instructions
+        </h3>
         <span className="font-light">{showItem.instructions}</span>
       </div>
       <br />
