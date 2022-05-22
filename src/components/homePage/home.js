@@ -12,7 +12,7 @@ const Main = () => {
   const [pictures, setPictures] = useState([]);
 
   useEffect(() => {
-    getPhoto("food", window.innerWidth > 768 ? 10 : 9)
+    getPhoto("food", window.innerWidth > 768 ? 4 : 3)
       .then((imageData) => {
         return imageData.photos;
       })
@@ -25,10 +25,10 @@ const Main = () => {
   const navigate = useNavigate();
   return (
     <div className="grid flex-wrap bg-black justify-around content-around w-auto h-screen row-start-2 row-end-3">
-      <ImageList cols={window.innerWidth > 768 ? 5 : 3}>
+      <ImageList cols={window.innerWidth > 768 ? 2 : 1}>
         {pictures.map((picture) => (
           <ImageListItem key={picture.id}>
-            <img src={`${picture.src.medium}`} alt={picture.alt} />
+            <img src={`${picture.src.landscape}`} alt={picture.alt} />
             <ImageListItemBar
               title={picture.alt}
               actionIcon={
