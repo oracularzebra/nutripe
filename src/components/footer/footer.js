@@ -29,7 +29,7 @@ const Footer = () => {
             <a className="font-bold" href="https://icons8.com/">icons8</a>
           </li>
           <li>
-            ImageList component of <b>materialUi</b> is used in home and food page.
+            ImageList component of <a className="font-bold" href="https://mui.com/">Material UI</a> is used in home and food page.
           </li>
         </ul>
       </div>
