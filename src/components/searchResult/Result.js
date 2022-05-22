@@ -56,7 +56,7 @@ const Result = () => {
 
   return (
     <div className="grid grid-cols-1 gap-4 m-2 md:grid-cols-5 md:m-1 md:mt-0 justify-center bg-slate-200">
-      {recipeLoaded ? (
+      {recipeLoaded && imagesLoaded? (
         recipe.map((item, index) => {
           return (
             <div
