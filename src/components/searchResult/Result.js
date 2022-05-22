@@ -7,9 +7,10 @@ import { Link } from "react-router-dom";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { FoodContext } from "../context/foodContext";
+import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
 
 const Result = () => {
-
   const { setItem, handleFavoriteButton, favorites } = useContext(FoodContext);
   const [recipe, setRecipe] = useState({});
   const { name } = useParams();
@@ -58,7 +59,10 @@ const Result = () => {
       {recipeLoaded ? (
         recipe.map((item, index) => {
           return (
-            <div className="grid content-between items-center rounded-md border-2 border-blue-200" key={index}>
+            <div
+              className="grid content-between items-center rounded-md border-2 border-blue-200"
+              key={index}
+            >
               <Link
                 className=""
                 to={`/${name}/${index}`}
@@ -76,7 +80,7 @@ const Result = () => {
               >
                 {imagesLoaded && (
                   <img
-                    className="h-96 object-cover w-screen md:h-40" 
+                    className="h-96 object-cover w-screen md:h-40"
                     src={
                       photos[index].photos[0]
                         ? photos[index].photos[0].src.large
@@ -85,11 +89,16 @@ const Result = () => {
                     alt={photos[index].photos.alt}
                   />
                 )}
-                <h5 className="text-center font-serif font-bold" id="itemHeading">{item.title}</h5>
-                <p className="text-xs text-center font-light" id="ingredientsOverview">{`${item.ingredients.substring(
-                  0,
-                  100
-                )}...`}</p>
+                <h5
+                  className="text-center font-serif font-bold"
+                  id="itemHeading"
+                >
+                  {item.title}
+                </h5>
+                <p
+                  className="text-xs text-center font-light"
+                  id="ingredientsOverview"
+                >{`${item.ingredients.substring(0, 100)}...`}</p>
               </Link>
               <div className="sticky bottom-0 right-0 m-auto">
                 <ThumbUpIcon
@@ -122,7 +131,11 @@ const Result = () => {
           );
         })
       ) : (
-        <p>Loading...</p>
+        <Box sx={{ backgroundColor:'white', width:'100vw', display: "grid", justifyContent: "center" }}>
+          <CircularProgress
+            sx={{ display: "grid", justifyContent: "center" }}
+          />
+        </Box>
       )}
     </div>
   );
