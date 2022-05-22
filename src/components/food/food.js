@@ -15,11 +15,16 @@ import { FoodContext } from "../context/foodContext";
 import getPhoto from "../../apiRequest/getPhoto";
 import { ImageList } from "@mui/material";
 import { ImageListItem } from "@mui/material";
+import { Box } from "@material-ui/core";
+import { LinearProgress } from "@mui/material";
 
 const Item = () => {
+
   const [pictures, setPictures] = useState([]);
   const [picturesLoaded, setPicturesLoaded] = useState(false);
   const { item } = useContext(FoodContext);
+  const [nutrientInfoLoaded, setNutrientInfoLoaded] = useState(false);
+
   const showItem =
     Object.keys(item).length === 0
       ? JSON.parse(localStorage.getItem("item"))
@@ -40,6 +45,7 @@ const Item = () => {
   });
 
   useEffect(() => {
+
     setPicturesLoaded(false);
     getPhoto(showItem.title, 6).then((response) => {
       console.log(response.photos);
@@ -50,13 +56,14 @@ const Item = () => {
       return getNutri(ingredientList[index]);
     });
     Promise.all(promises).then((list) => {
+      setNutrientInfoLoaded(false);
       let tempNutrient = Object.create(nutrientsObj);
       list.map((item) => {
         const values = Object.values(item);
         const nutrients = values[0][0];
         console.log(nutrients);
         try {
-          return (tempNutrient = {
+          tempNutrient = {
             sugar_g: nutrients.sugar_g + tempNutrient.sugar_g,
             fiber_g: nutrients.fiber_g + tempNutrient.fiber_g,
             serving_size_g:
@@ -73,7 +80,8 @@ const Item = () => {
             carbohydrates_total_g:
               nutrients.carbohydrates_total_g +
               tempNutrient.carbohydrates_total_g,
-          });
+          };
+          setNutrientInfoLoaded(true);
         } catch (err) {
           return;
         }
@@ -101,13 +109,13 @@ const Item = () => {
       </h2>
       {picturesLoaded && (
         <ImageList
-          sx={{ 
+          sx={{
             margin: "auto",
             width: "80vw",
-            height: '40vh',
-            borderRadius: '5px',
-            boxShadow: '4px 4px 4px grey'
-           }}
+            height: "40vh",
+            borderRadius: "5px",
+            boxShadow: "4px 4px 4px grey",
+          }}
           variant="quilted"
           cols={4}
           rowHeight={121}
@@ -129,61 +137,151 @@ const Item = () => {
           <li className="flex flex-col items-center content-center">
             <img src={SugarIcon} alt="sugar" />
             <h6 className="text-sm font-light">
-              Sugar {nutrientsObj.sugar_g ? nutrientsObj.sugar_g.toFixed(2)+'g' : 'Info Not available'}
+              Sugar{" "}
+              {nutrientsObj.sugar_g ? (
+                nutrientsObj.sugar_g.toFixed(2) + "g"
+              ) : !nutrientInfoLoaded ? (
+                <Box sx={{ width: "100%" }}>
+                  <LinearProgress />
+                </Box>
+              ) : (
+                "Info not available"
+              )}
             </h6>
           </li>
           <li className="flex flex-col items-center content-center">
             <img src={CarbohydratesIcon} alt="carbohydrates" />
             <h6 className="text-sm font-light">
-              Carbohydrates {nutrientsObj.carbohydrates_total_g ? nutrientsObj.carbohydrates_total_g.toFixed(2)+'g': 'Info not available'}
+              Carbohydrates{" "}
+              {nutrientsObj.carbohydrates_total_g ? (
+                nutrientsObj.carbohydrates_total_g.toFixed(2) + "g"
+              ) : !nutrientInfoLoaded ? (
+                <Box sx={{ width: "100%" }}>
+                  <LinearProgress />
+                </Box>
+              ) : (
+                "Info not available"
+              )}
             </h6>
           </li>
           <li className="flex flex-col items-center content-center">
             <img src={CalorieIcon} alt="calories" />
             <h6 className="text-sm font-light">
-              Calories {nutrientsObj.calories ?nutrientsObj.calories.toFixed(2)+'kcal' : 'Info not available'}
+              Calories{" "}
+              {nutrientsObj.calories ? (
+                nutrientsObj.calories.toFixed(2) + "g"
+              ) : !nutrientInfoLoaded ? (
+                <Box sx={{ width: "100%" }}>
+                  <LinearProgress />
+                </Box>
+              ) : (
+                "Info not available"
+              )}
             </h6>
           </li>
           <li className="flex flex-col items-center content-center">
             <img src={ProteinIcon} alt="protein" />
             <h6 className="text-sm font-light">
-              Protein {nutrientsObj.protein_g ? nutrientsObj.protein_g.toFixed(2)+'g' : 'Info not available'}
+              Protein{" "}
+              {nutrientsObj.protein_g ? (
+                nutrientsObj.protein_g.toFixed(2) + "g"
+              ) : !nutrientInfoLoaded ? (
+                <Box sx={{ width: "100%" }}>
+                  <LinearProgress />
+                </Box>
+              ) : (
+                "Info not available"
+              )}
             </h6>
           </li>
           <li className="flex flex-col items-center content-center">
             <img src={FatIcon} alt="total fat" />
             <h6 className="text-sm font-light">
-              Total fat {nutrientsObj.fat_total_g ? nutrientsObj.fat_total_g.toFixed(2)+'g' : 'Info not available'}
+              Total fat{" "}
+              {nutrientsObj.fat_total_g ? (
+                nutrientsObj.fat_total_g.toFixed(2) + "g"
+              ) : !nutrientInfoLoaded ? (
+                <Box sx={{ width: "100%" }}>
+                  <LinearProgress />
+                </Box>
+              ) : (
+                "Info not available"
+              )}
             </h6>
           </li>
           <li className="flex flex-col items-center content-center">
             <img src={FatSaturatedIcon} alt="saturated fat" />
             <h6 className="text-sm font-light">
-              Saturated fat {nutrientsObj.fat_saturated_g ? nutrientsObj.fat_saturated_g.toFixed(2)+'g' : 'Info not available'}
+              Saturated fat{" "}
+              {nutrientsObj.fat_saturated_g ? (
+                nutrientsObj.fat_saturated_g.toFixed(2) + "g"
+              ) : !nutrientInfoLoaded ? (
+                <Box sx={{ width: "100%" }}>
+                  <LinearProgress />
+                </Box>
+              ) : (
+                "Info not available"
+              )}
             </h6>
           </li>
           <li className="flex flex-col items-center content-center">
             <img src={PotassiumIcon} alt="potassium" />
             <h6 className="text-sm font-light">
-              Potassium {nutrientsObj.potassium_mg ? nutrientsObj.potassium_mg.toFixed(2)+'mg' : 'Info not available'}
+              Potassium{" "}
+              {nutrientsObj.potassium_mg ? (
+                nutrientsObj.potassium_mg.toFixed(2) + "g"
+              ) : !nutrientInfoLoaded ? (
+                <Box sx={{ width: "100%" }}>
+                  <LinearProgress />
+                </Box>
+              ) : (
+                "Info not available"
+              )}
             </h6>
           </li>
           <li className="flex flex-col items-center content-center">
             <img src={SodiumIcon} alt="Sodium" />
             <h6 className="text-sm font-light">
-              Sodium {nutrientsObj.sodium_mg ? nutrientsObj.sodium_mg.toFixed(2)+'mg' : 'Info not available'}
+              Sodium{" "}
+              {nutrientsObj.sodium_mg ? (
+                nutrientsObj.sodium_mg.toFixed(2) + "g"
+              ) : !nutrientInfoLoaded ? (
+                <Box sx={{ width: "100%" }}>
+                  <LinearProgress />
+                </Box>
+              ) : (
+                "Info not available"
+              )}
             </h6>
           </li>
           <li className="flex flex-col items-center content-center">
             <img src={FibreIcon} alt="fiber" />
             <h6 className="text-sm font-light">
-              Fiber {nutrientsObj.fiber_g?nutrientsObj.fiber_g.toFixed(2)+'g' :'Info not available'}
+              Fiber{" "}
+              {nutrientsObj.fiber_g ? (
+                nutrientsObj.fiber_g.toFixed(2) + "g"
+              ) : !nutrientInfoLoaded ? (
+                <Box sx={{ width: "100%" }}>
+                  <LinearProgress />
+                </Box>
+              ) : (
+                "Info not available"
+              )}
             </h6>{" "}
           </li>
           <li className="flex flex-col items-center content-center">
             <img src={CholestrolIcon} alt="Cholesterol" />
             <h6 className="text-sm font-light">
-              Cholesterol {nutrientsObj.cholesterol_mg?nutrientsObj.cholesterol_mg.toFixed(2)+"mg": 'Info not available'}
+              Cholesterol{" "}
+              {nutrientsObj.cholesterol_mg ? (
+                nutrientsObj.cholesterol_mg.toFixed(2) + "g"
+              ) : !nutrientInfoLoaded ? (
+                <Box sx={{ width: "100%" }}>
+                  <LinearProgress />
+                </Box>
+              ) : (
+                "Info not available"
+              )}
             </h6>
           </li>
         </ul>
