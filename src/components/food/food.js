@@ -17,8 +17,6 @@ import { ImageList } from "@mui/material";
 import { ImageListItem } from "@mui/material";
 import { Box } from "@material-ui/core";
 import { LinearProgress } from "@mui/material";
-import image1 from "../../background Images/food.jpeg";
-import image2 from "../../background Images/food2.jpg";
 
 const Item = () => {
 
