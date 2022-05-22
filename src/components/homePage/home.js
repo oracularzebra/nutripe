@@ -8,7 +8,7 @@ import ListSubheader from "@mui/material/ListSubheader";
 import IconButton from "@mui/material/IconButton";
 import InfoIcon from "@mui/icons-material/Info";
 
-const Main = () => {
+const Main = ({setFoodItem}) => {
   const [pictures, setPictures] = useState([]);
 
   useEffect(() => {
@@ -27,7 +27,9 @@ const Main = () => {
     <div className="grid flex-wrap bg-black justify-around content-around w-auto h-screen row-start-2 row-end-3">
       <ImageList cols={window.innerWidth > 768 ? 2 : 1}>
         {pictures.map((picture) => (
-          <ImageListItem key={picture.id}>
+          <ImageListItem onClick={()=>{
+            console.log('clicked');
+          }} key={picture.id}>
             <img src={`${picture.src.landscape}`} alt={picture.alt} />
             <ImageListItemBar
               title={picture.alt}
