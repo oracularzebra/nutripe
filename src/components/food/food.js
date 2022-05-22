@@ -17,6 +17,9 @@ import { ImageList } from "@mui/material";
 import { ImageListItem } from "@mui/material";
 import { Box } from "@material-ui/core";
 import { LinearProgress } from "@mui/material";
+import image1 from '../../background Images/food.jpeg';
+import image2 from '../../background Images/food2.jpg';
+
 
 const Item = () => {
 
@@ -100,7 +103,12 @@ const Item = () => {
   return (
     <div
       style={{
-        backgroundImage: "url('../../background Images/food.jpeg')",
+        // backgroundImage: `url(${image2})import image1 from '../../background Images/food.jpeg';`,
+        // backgroundImage: "url('https://images.pexels.com/photos/164005/pexels-photo-164005.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260')",
+        // backgroundImage: "url('https://images.pexels.com/photos/1939485/pexels-photo-1939485.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260')",
+        backgroundImage: "url('https://images.pexels.com/photos/129731/pexels-photo-129731.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260')",
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat'
       }}
       className="grid bg-repeat-round"
     >
