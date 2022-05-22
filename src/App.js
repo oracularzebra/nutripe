@@ -11,7 +11,7 @@ import ContextProvider from "./components/context/foodContext";
 function App() {
 
   return (
-    <div className="grid content-between w-screen h-full">
+    <div className="grid content-between w-screen overflow-scroll h-max-full h-screen">
       <ContextProvider>
         <Header></Header>
         <Routes>
