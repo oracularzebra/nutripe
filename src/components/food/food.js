@@ -310,7 +310,7 @@ const Item = () => {
               key={index}
             >
               <input className="scale-150 mr-2 order-1" type="checkbox" />
-              <p className="font-mono" id="ingredientListItem">
+              <p className="font-mono" id="ingredientListItemText">
                 {ingredient.replace(";", " - ").replace(",", " - ")}
               </p>
             </li>
