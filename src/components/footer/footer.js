@@ -4,8 +4,8 @@ import { faHeart } from "@fortawesome/free-solid-svg-icons";
 
 const Footer = () => {
   return (
-    <div className="grid justify-center bg-slate-200 bg-blend-hue text-center">
-      <h4>Designed and developed with <FontAwesomeIcon color="red" icon={faHeart} /> by Kartikey</h4>
+    <div className="grid justify-center bg-gradient-to-b from-[#4d9ae7] to-[#bebebe] text-center">
+      <h4>Designed and developed with <FontAwesomeIcon color="red" icon={faHeart} /><a href="mailto:kartikekumar150@gmail.com">by Kartikey</a></h4>
       <div>
         <ul>
           <li> 
