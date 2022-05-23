@@ -36,12 +36,8 @@ const Result = () => {
           Promise.all(promises)
             .then((imageData) => {
               console.log(imageData);
-              if (imageData[0].error === "Rate limit exceeded") {
-                setImagesLoaded(false);
-              } else {
-                setPhotos(imageData);
-                setImagesLoaded(true);
-              }
+              setPhotos(imageData);
+              setImagesLoaded(true);
             })
             .catch(() => {
               setImagesLoaded(false);
@@ -55,12 +51,12 @@ const Result = () => {
   }, [name]);
 
   return (
-    <div className="grid grid-cols-1 gap-4 m-2 md:grid-cols-5 md:m-1 md:mt-0 justify-center bg-slate-200">
-      {recipeLoaded && imagesLoaded? (
+    <div className="grid grid-cols-1 gap-4 h-screen overflow-scroll m-2 md:grid-cols-5 md:m-1 md:mt-0 justify-center bg-slate-200">
+      {recipeLoaded && imagesLoaded ? (
         recipe.map((item, index) => {
           return (
             <div
-              className="grid content-between items-center rounded-md border-2 border-blue-200"
+              className="grid content-stretch items-stretch rounded-md border-2 border-blue-200"
               key={index}
             >
               <Link
@@ -129,12 +125,21 @@ const Result = () => {
             </div>
           );
         })
-      ) : (
-        <Box sx={{ backgroundColor:'white', width:'100vw', display: "grid", justifyContent: "center" }}>
+      ) : !imagesLoaded || !recipeLoaded ? (
+        <Box>
           <CircularProgress
-            sx={{ display: "grid", justifyContent: "center" }}
+            sx={{
+              left: 0,
+              right: 0,
+              top: 0,
+              bottom: 0,
+              margin: "auto",
+              position: "absolute",
+            }}
           />
         </Box>
+      ) : (
+        <p className="absolute m-auto font-bold">Please try something else</p>
       )}
     </div>
   );
