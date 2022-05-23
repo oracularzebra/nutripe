@@ -7,14 +7,14 @@ const Header = () => {
   const ref = useRef(null);
   const { handleSearchSubmit, value, setValue } = useContext(FoodContext);
   return (
-    <div className="flex justify-between items-center w-screen h-fit rounded-bl-md rounded-br-md p-3 bg-[#0000007c]">
+    <div className="flex justify-between items-center w-screen h-fit rounded-bl-md rounded-br-md p-3 bg-[#fceaea7c]">
       <Link to="/">
-        <h2 className="text-white text-2xl">Nutripe</h2>
+        <h2 className="text-[rgb(2,2,2)] text-xl">Nutripe</h2>
       </Link>
       <form onSubmit={handleSearchSubmit}>
         <label>
           <input
-            className="p-2 w-52 mr-0 md:mr-2 rounded-md"
+            className="p-2 text-[rgb(2,2,2)] w-40 mr-0 md:mr-0 rounded-md"
             required
             value={value}
             onChange={(e) => setValue(e.target.value)}
