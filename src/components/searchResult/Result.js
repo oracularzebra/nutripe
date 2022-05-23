@@ -75,7 +75,7 @@ const Result = () => {
               >
                 {imagesLoaded && (
                   <img
-                    className="h-96 object-cover rounded-md w-screen md:h-40"
+                    className="h-96 object-cover rounded-md w-screen  md:h-40 lg:h-96"
                     src={
                       photos[index].photos[0]
                         ? photos[index].photos[0].src.large
