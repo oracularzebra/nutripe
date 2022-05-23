@@ -3,8 +3,6 @@ import { useNavigate } from "react-router";
 import getPhoto from "../../apiRequest/getPhoto";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
-import ImageListItemBar from "@mui/material/ImageListItemBar";
-import IconButton from "@mui/material/IconButton";
 
 const Main = () => {
   const [pictures, setPictures] = useState([]);
