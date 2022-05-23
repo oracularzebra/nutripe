@@ -8,7 +8,7 @@ const Footer = () => {
       <h4>Designed and developed with <FontAwesomeIcon color="red" icon={faHeart} /> by Kartikey</h4>
       <div>
         <ul>
-          <li>
+          <li> 
             All the pictures are from&nbsp;
             <a className="font-bold" href="https://www.pexels.com">pexels.</a>
           </li>
