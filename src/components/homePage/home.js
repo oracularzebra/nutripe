@@ -12,7 +12,7 @@ const Main = () => {
     const randomFood = [
       "samosa",
       "momo",
-      "juice",
+      "hamburger",
       "biryani",
       "shake",
       "ice cream",
