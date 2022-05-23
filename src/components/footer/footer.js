@@ -1,9 +1,11 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import  { faHeart } from "@fortawesome/free-regular-svg-icons";
 
 const Footer = () => {
   return (
     <div className="grid justify-center bg-slate-200 bg-blend-hue text-center">
-      <h4>Designed and developed with ♥️ by Kartikey</h4>
+      <h4>Designed and developed with <FontAwesomeIcon color="red" icon={faHeart} /> by Kartikey</h4>
       <div>
         <ul>
           <li>
@@ -22,6 +24,7 @@ const Footer = () => {
             <a className="font-bold" href="https://rapidapi.com/calorieninjas/api/calorieninjas/">
               CaloriNinja&nbsp;
             </a>
+
             from RapidAPI.
           </li>
           <li>
