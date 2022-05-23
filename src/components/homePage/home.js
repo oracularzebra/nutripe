@@ -54,12 +54,6 @@ const Main = () => {
         >
           Favourites
         </button>
-        <button className="p-3 bg-blue-500 rounded-md" id="likedButton">
-          Liked
-        </button>
-        <button className="p-3 bg-blue-500 rounded-md" id="watchLaterButton">
-          Watch Later
-        </button>
       </div>
     </div>
   );

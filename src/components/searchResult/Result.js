@@ -96,14 +96,6 @@ const Result = () => {
                 >{`${item.ingredients.substring(0, 100)}...`}</p>
               </Link>
               <div className="sticky bottom-0 right-0 m-auto">
-                <ThumbUpIcon
-                  sx={{
-                    color: "#5e95f2",
-                  }}
-                  onClick={() => {
-                    console.log("clicked");
-                  }}
-                ></ThumbUpIcon>
                 <FavoriteBorderIcon
                   id="favoriteButton"
                   sx={favorites.map((favoriteItem) => {
