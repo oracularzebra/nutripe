@@ -17,20 +17,21 @@ import { ImageList } from "@mui/material";
 import { ImageListItem } from "@mui/material";
 import { Box } from "@material-ui/core";
 import { LinearProgress } from "@mui/material";
-import '../food/food.css';
+import "../food/food.css";
+import { useParams } from "react-router";
+import getFood from "./getFood";
 
 const Item = () => {
-
+  const { id, name } = useParams();
+  const [gotFood, setGotFood] = useState(false);
   const [pictures, setPictures] = useState([]);
   const [picturesLoaded, setPicturesLoaded] = useState(false);
-  const { item } = useContext(FoodContext);
+  // const { item } = useContext(FoodContext);
+  const [item, setItem] = useState({});
+
   const [nutrientInfoLoaded, setNutrientInfoLoaded] = useState(false);
 
-  const showItem =
-    Object.keys(item).length === 0
-      ? JSON.parse(localStorage.getItem("item"))
-      : item;
-  const ingredientList = showItem.ingredients.split("|");
+  const [ingredientList, setIngredientList] = useState([]);
   const [nutrientsObj, setNutrientsObj] = useState({
     sugar_g: 0,
     fiber_g: 0,
@@ -47,58 +48,66 @@ const Item = () => {
 
   useEffect(() => {
 
-    setPicturesLoaded(false);
-    getPhoto(showItem.title, 6).then((response) => {
-      console.log(response.photos);
-      setPictures(response.photos);
-      setPicturesLoaded(true);
-    });
-    const promises = Array.from({ length: 10 }).map((_, index) => {
-      return getNutri(ingredientList[index]);
-    });
-    Promise.all(promises).then((list) => {
-      setNutrientInfoLoaded(false);
-      let tempNutrient = Object.create(nutrientsObj);
-      list.map((item) => {
-        const values = Object.values(item);
-        const nutrients = values[0][0];
-        console.log(nutrients);
-        try {
-          tempNutrient = {
-            sugar_g: nutrients.sugar_g + tempNutrient.sugar_g,
-            fiber_g: nutrients.fiber_g + tempNutrient.fiber_g,
-            serving_size_g:
-              nutrients.serving_size_g + tempNutrient.serving_size_g,
-            sodium_mg: nutrients.sodium_mg + tempNutrient.sodium_mg,
-            potassium_mg: nutrients.potassium_mg + tempNutrient.potassium_mg,
-            fat_saturated_g:
-              nutrients.fat_saturated_g + tempNutrient.fat_saturated_g,
-            fat_total_g: nutrients.fat_total_g + tempNutrient.fat_total_g,
-            calories: nutrients.calories + tempNutrient.calories,
-            cholesterol_mg:
-              nutrients.cholesterol_mg + tempNutrient.cholesterol_mg,
-            protein_g: nutrients.protein_g + tempNutrient.protein_g,
-            carbohydrates_total_g:
-              nutrients.carbohydrates_total_g +
-              tempNutrient.carbohydrates_total_g,
-          };
-          setNutrientInfoLoaded(true);
-        } catch (err) {
-          return;
-        }
+    const getFoodItemAndGetPictures = async () => {
+      setGotFood(false);
+      const item = getFood(name, id).then(foodArr => {
+        console.log(foodArr[id])
+        setItem(foodArr[id])
+        // setGotFood(true)
+        return foodArr[id];
       });
-      setNutrientsObj(tempNutrient);
-    });
+      console.log(item);
+      setItem(item);
+      setPicturesLoaded(false);
+      console.log(item);
+
+      getPhoto(item.title, 6).then((response) => {
+        console.log(response.photos);
+        setPictures(response.photos);
+        setPicturesLoaded(true);
+      });
+      const promises = gotFood && Array.from({ length: 10 }).map((_, index) => {
+        return getNutri(ingredientList[index]);
+      });
+      gotFood && Promise.all(promises).then((list) => {
+        setNutrientInfoLoaded(false);
+        let tempNutrient = Object.create(nutrientsObj);
+        list.map((item) => {
+          const values = Object.values(item);
+          const nutrients = values[0][0];
+          console.log(nutrients);
+          try {
+            tempNutrient = {
+              sugar_g: nutrients.sugar_g + tempNutrient.sugar_g,
+              fiber_g: nutrients.fiber_g + tempNutrient.fiber_g,
+              serving_size_g:
+                nutrients.serving_size_g + tempNutrient.serving_size_g,
+              sodium_mg: nutrients.sodium_mg + tempNutrient.sodium_mg,
+              potassium_mg: nutrients.potassium_mg + tempNutrient.potassium_mg,
+              fat_saturated_g:
+                nutrients.fat_saturated_g + tempNutrient.fat_saturated_g,
+              fat_total_g: nutrients.fat_total_g + tempNutrient.fat_total_g,
+              calories: nutrients.calories + tempNutrient.calories,
+              cholesterol_mg:
+                nutrients.cholesterol_mg + tempNutrient.cholesterol_mg,
+              protein_g: nutrients.protein_g + tempNutrient.protein_g,
+              carbohydrates_total_g:
+                nutrients.carbohydrates_total_g +
+                tempNutrient.carbohydrates_total_g,
+            };
+            setNutrientInfoLoaded(true);
+          } catch (err) {
+            return;
+          }
+        });
+        setNutrientsObj(tempNutrient);
+      });
+    };
+    getFoodItemAndGetPictures();
   }, []);
 
-  useEffect(() => {
-    if (Object.keys(item).length) {
-      localStorage.setItem("item", JSON.stringify(item));
-      setNutrientsObj({});
-    }
-  }, [item]);
-
   return (
+    gotFood && 
     <div
       style={{
         // backgroundImage: `url(${image2})import image1 from '../../background Images/food.jpeg';`,
@@ -112,7 +121,7 @@ const Item = () => {
       className="grid bg-repeat-round"
     >
       <h2 className="text-center font-bold text-2xl m-4" id="foodTitle">
-        {showItem.title}
+        {item.title}
       </h2>
       {picturesLoaded && (
         <ImageList
@@ -295,7 +304,7 @@ const Item = () => {
       </div>
       <div className="grid">
         <h4 className="text-xl font-bold m-auto" id="servingInfo">
-          {showItem.servings}
+          {item.servings}
         </h4>
         <h3
           className="text-xl font-normal m-auto"
@@ -310,7 +319,11 @@ const Item = () => {
               id="ingredientListItem"
               key={index}
             >
-              <input id="ingredientListItemCheckbox" className="scale-150 mr-2 order-1" type="checkbox" />
+              <input
+                id="ingredientListItemCheckbox"
+                className="scale-150 mr-2 order-1"
+                type="checkbox"
+              />
               <p className="font-mono" id="ingredientListItemText">
                 {ingredient.replace(";", " - ").replace(",", " - ")}
               </p>
@@ -320,7 +333,7 @@ const Item = () => {
         <h3 className="font-bold text-2xl font-mono text-center">
           Instructions
         </h3>
-        <span className="font-light">{showItem.instructions}</span>
+        <span className="font-light">{item.instructions}</span>
       </div>
       <br />
     </div>

@@ -4,7 +4,6 @@ import React from "react";
 import getRecipes from "../../apiRequest/getRecipes";
 import getPhoto from "../../apiRequest/getPhoto";
 import { Link } from "react-router-dom";
-import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { FoodContext } from "../context/foodContext";
 import CircularProgress from "@mui/material/CircularProgress";
