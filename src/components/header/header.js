@@ -7,7 +7,7 @@ const Header = () => {
   const ref = useRef(null);
   const { handleSearchSubmit, value, setValue } = useContext(FoodContext);
   return (
-    <div className="flex justify-between items-center w-screen h-fit rounded-bl-md rounded-br-md p-3 bg-black">
+    <div className="flex justify-between items-center w-screen h-fit rounded-bl-md rounded-br-md p-3 bg-[#0000007c]">
       <Link to="/">
         <h2 className="text-white text-2xl">Nutripe</h2>
       </Link>
