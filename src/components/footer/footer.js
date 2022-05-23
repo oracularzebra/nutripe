@@ -1,11 +1,11 @@
 import React from "react";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faHeart } from "@fortawesome/free-solid-svg-icons"; 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart } from "@fortawesome/free-solid-svg-icons"; 
 
 const Footer = () => {
   return (
     <div className="grid justify-center bg-slate-200 bg-blend-hue text-center">
-      {/* <h4>Designed and developed with <FontAwesomeIcon color="red" icon={faHeart} /> by Kartikey</h4> */}
+      <h4>Designed and developed with <FontAwesomeIcon color="red" icon={faHeart} /> by Kartikey</h4>
       <div>
         <ul>
           <li> 
