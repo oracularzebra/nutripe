@@ -1,7 +1,7 @@
 # This is a recipe webapp
 
 ### Overview
-##### This webapp was build as a project for learning web development. The app uses all the latest front-end stacks. 
+##### This webapp was build as a project while learning web development. The app uses all the latest front-end stacks. 
 
 ### Technologies used
 * HTML
@@ -12,6 +12,7 @@
 * [Material UI](https://mui.com/)
 * [Axios](https://axios-http.com/)
 * [react-router](https://reactrouter.com/)
+* [Font awesome icons](https://fontawesome.com/)
 
 ### ReactJs concepts used
 * Axios
