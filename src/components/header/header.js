@@ -7,9 +7,9 @@ const Header = () => {
   const ref = useRef(null);
   const { handleSearchSubmit, value, setValue } = useContext(FoodContext);
   return (
-    <div className="flex justify-between items-center w-screen h-fit rounded-bl-md rounded-br-md p-3 bg-blue-300">
+    <div className="flex justify-between items-center w-screen h-fit rounded-bl-md rounded-br-md p-3 bg-black">
       <Link to="/">
-        <h2 className="text-2xl">Nutripe</h2>
+        <h2 className="text-white text-2xl">Nutripe</h2>
       </Link>
       <form onSubmit={handleSearchSubmit}>
         <label>
