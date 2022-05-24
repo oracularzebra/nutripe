@@ -30,7 +30,6 @@ const Item = () => {
   const [item, setItem] = useState({});
 
   const [nutrientInfoLoaded, setNutrientInfoLoaded] = useState(false);
-
   const [ingredientList, setIngredientList] = useState([]);
   const [nutrientsObj, setNutrientsObj] = useState({
     sugar_g: 0,
@@ -47,30 +46,28 @@ const Item = () => {
   });
 
   useEffect(() => {
-
     const getFoodItemAndGetPictures = async () => {
       setGotFood(false);
-      const item = getFood(name, id).then(foodArr => {
-        console.log(foodArr[id])
-        setItem(foodArr[id])
-        // setGotFood(true)
-        return foodArr[id];
-      });
-      console.log(item);
+      const item = await getFood(name, id);
+      setGotFood(true);
       setItem(item);
       setPicturesLoaded(false);
-      console.log(item);
-
+      const tempIngredientList = item.ingredients.split("|");
+      setIngredientList(tempIngredientList);
+      console.log(tempIngredientList);
       getPhoto(item.title, 6).then((response) => {
         console.log(response.photos);
         setPictures(response.photos);
         setPicturesLoaded(true);
       });
-      const promises = gotFood && Array.from({ length: 10 }).map((_, index) => {
-        return getNutri(ingredientList[index]);
+      const promises = Array.from({ length: 10 }).map(async (_, index) => {
+        const nutritionobj = getNutri(tempIngredientList[index]);
+        console.log(nutrientsObj);
+        return nutritionobj;
       });
-      gotFood && Promise.all(promises).then((list) => {
+      Promise.all(promises).then((list) => {
         setNutrientInfoLoaded(false);
+        console.log("working");
         let tempNutrient = Object.create(nutrientsObj);
         list.map((item) => {
           const values = Object.values(item);
@@ -107,7 +104,6 @@ const Item = () => {
   }, []);
 
   return (
-    gotFood && 
     <div
       style={{
         // backgroundImage: `url(${image2})import image1 from '../../background Images/food.jpeg';`,
