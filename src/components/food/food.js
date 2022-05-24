@@ -1,5 +1,3 @@
-import { useContext, useEffect, useState } from "react";
-import getNutri from "../../apiRequest/getNutritionalInfo";
 import React from "react";
 import SugarIcon from "../../icons/icons8-sugar-48.png";
 import CarbohydratesIcon from "../../icons/icons8-carbohydrates-50.png";
@@ -11,16 +9,13 @@ import PotassiumIcon from "../../icons/icons8-potassium-64.png";
 import ProteinIcon from "../../icons/icons8-protein-50.png";
 import SodiumIcon from "../../icons/icons8-sodium-50.png";
 import CalorieIcon from "../../icons/icons8-calories-50.png";
-import getPhoto from "../../apiRequest/getPhoto";
 import { ImageList } from "@mui/material";
 import { ImageListItem } from "@mui/material";
 import { Box } from "@material-ui/core";
 import { LinearProgress } from "@mui/material";
 import "../food/food.css";
 import { useParams } from "react-router";
-import getFood from "./getFood";
 import { CircularProgress } from "@mui/material";
-import { FoodContext } from "../context/foodContext";
 import useGetFoodItem_Pictures_items from "./getFood_Pictures_NutriInfo";
 
 const Item = () => {
