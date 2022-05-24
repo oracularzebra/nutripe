@@ -20,6 +20,7 @@ import "../food/food.css";
 import { useParams } from "react-router";
 import getFood from "./getFood";
 import { CircularProgress } from "@mui/material";
+import { FoodContext } from "../context/foodContext";
 
 const Item = () => {
   const { id, name } = useParams();
@@ -102,8 +103,6 @@ const Item = () => {
   }, []);
 
   return (
-    gotFood &&
-    picturesLoaded ? (
       <div
         style={{
           // backgroundImage: `url(${image2})import image1 from '../../background Images/food.jpeg';`,
@@ -113,13 +112,18 @@ const Item = () => {
             "url('https://images.pexels.com/photos/129731/pexels-photo-129731.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260')",
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
+          height: '100vh'
         }}
         className="grid bg-repeat-round"
       >
+        {
+        gotFood && picturesLoaded ?
+        (
+          <div>
         <h2 className="text-center font-bold text-2xl m-4" id="foodTitle">
           {item.title}
         </h2>
-        (
+        
         <ImageList
           sx={{
             margin: "auto",
@@ -143,7 +147,7 @@ const Item = () => {
             </ImageListItem>
           ))}
         </ImageList>
-        )
+        
         <div>
           <ul className="flex flex-wrap justify-center items-center gap-1">
             <li className="flex flex-col items-center content-center">
@@ -331,22 +335,21 @@ const Item = () => {
           </h3>
           <span className="font-light">{item.instructions}</span>
         </div>
-        <br />
+        <br /></div>)
+        :(
+          <Box>
+              <CircularProgress
+                sx={{
+                  left: 0,
+                  right: 0,
+                  top: 0,
+                  bottom: 0,
+                  margin: "auto",
+                  position: "absolute",
+                }}
+              />
+            </Box>
+        )}
       </div>
-    ):(
-      <Box>
-          <CircularProgress
-            sx={{
-              left: 0,
-              right: 0,
-              top: 0,
-              bottom: 0,
-              margin: "auto",
-              position: "absolute",
-            }}
-          />
-        </Box>
-    )
-  );
-};
+      )}
 export default Item;
