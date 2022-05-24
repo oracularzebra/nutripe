@@ -55,7 +55,7 @@ const Result = () => {
         recipe.map((item, index) => {
           return (
             <div
-              className="grid content-stretch items-stretch rounded-md border-2 border-blue-200"
+              className="grid items-stretch rounded-md border-2 border-blue-200"
               key={index}
             >
               <Link
