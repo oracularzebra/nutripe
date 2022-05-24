@@ -30,7 +30,7 @@ const useGetFoodItem_Pictures_items = (name, id) => {
         setGotFood(false);
         setPicturesLoaded(false);
         setNutrientInfoLoaded(false);
-        
+
       getRecipesFromApiNinjas(name).then((itemArr) => {
         const item = itemArr[id];
         setItem(item);
@@ -46,7 +46,6 @@ const useGetFoodItem_Pictures_items = (name, id) => {
           let tempNutriObj = Object.create(nutriObj);
 
           for (let item of list) {
-            console.log(item);
             for (let items of item.items) {
               tempNutriObj = {
                 sugar_g: items.sugar_g + tempNutriObj.sugar_g,
@@ -73,8 +72,9 @@ const useGetFoodItem_Pictures_items = (name, id) => {
           setNutriObj(tempNutriObj);
           setNutrientInfoLoaded(true);
         });
-        getPhoto(itemArr[id], 6).then((images) => {
+        getPhoto(itemArr[id].title, 6).then((images) => {
           setPictures(images);
+          console.log(images);
           setPicturesLoaded(true);
         });
 
