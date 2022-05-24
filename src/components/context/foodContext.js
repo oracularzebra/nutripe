@@ -35,7 +35,7 @@ const ContextProvider = ({ children }) => {
 
   const [favorites, dispatch] = useReducer(
     favoriteReducer,
-    JSON.parse(localStorage.getItem("favorites")) || []
+    JSON.parse(localStorage.getItem("favoriteItem")) || []
   );
   const handleFavoriteButton = (type, item) => {
     dispatch({
