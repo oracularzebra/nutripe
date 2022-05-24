@@ -6,8 +6,11 @@ import getRecipesFromApiNinjas from "../../apiRequest/getRecipes";
 const useGetFoodItem_Pictures_items = (name, id) => {
 
     const [item, setItem] = useState();
+    const [gotFood, setGotFood] = useState(false);
     const [pictures, setPictures] = useState();
+    const [picturesLoaded, setPicturesLoaded] = useState(false);
     const [ingredientList, setIngredientList] = useState([]);
+    const [nutrientInfoLoaded, setNutrientInfoLoaded] = useState(false);
     const [nutriObj, setNutriObj] = useState({
       sugar_g: 0,
       fiber_g: 0,
@@ -24,13 +27,16 @@ const useGetFoodItem_Pictures_items = (name, id) => {
 
     useEffect(() => {
 
+        setGotFood(false);
+        setPicturesLoaded(false);
+        setNutrientInfoLoaded(false);
+        
       getRecipesFromApiNinjas(name).then((itemArr) => {
         const item = itemArr[id];
         setItem(item);
-
+        setGotFood(true);
         const ingredients = item.ingredients.split("|");
         setIngredientList(ingredients);
-
         const promises = Array.from({ length: ingredients.length }).map(
           (_, index) => {
             return getNutri(ingredients[index]);
@@ -65,15 +71,17 @@ const useGetFoodItem_Pictures_items = (name, id) => {
           };
           console.log(tempNutriObj);
           setNutriObj(tempNutriObj);
+          setNutrientInfoLoaded(true);
         });
         getPhoto(itemArr[id], 6).then((images) => {
           setPictures(images);
+          setPicturesLoaded(true);
         });
 
         return itemArr[id];
       });
     }, [name, id]);
-    return [item, pictures, ingredientList, nutriObj];
+    return [item, pictures, ingredientList, nutriObj, gotFood, picturesLoaded, nutrientInfoLoaded];
   };
 
   export default useGetFoodItem_Pictures_items;
