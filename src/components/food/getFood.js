@@ -5,7 +5,7 @@ import getRecipesFromApiNinjas from "../../apiRequest/getRecipes";
 const getFood = async( name, id ) => {
 
    const foodItem = await getRecipesFromApiNinjas(name);
-    console.log(foodItem)
+   console.log('Fetching using getFood() method')
     return foodItem[parseInt(id)];
 };
 export default getFood;
