@@ -7,6 +7,7 @@ import Item from "./components/food/food";
 import Main from "./components/homePage/home";
 import Favorites from "./components/favorites/favorites";
 import ContextProvider from "./components/context/foodContext";
+import FavoriteItem from "./components/food/favoriteFood";
 
 function App() {
 
@@ -19,7 +20,7 @@ function App() {
           <Route path="/search/:name" element={<Result />}></Route>
           <Route path="/:name/:id" element={<Item/>} />
           <Route path="/favorites" element={<Favorites />}></Route>
-          <Route path="/favorites/:name" element={<Item/>}></Route>
+          <Route path="/favorites/:name" element={<FavoriteItem/>}></Route>
           <Route path="*"></Route>
         </Routes>
       </ContextProvider>
