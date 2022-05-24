@@ -16,7 +16,7 @@ const ContextProvider = ({ children }) => {
     switch (action.type) {
       case "add": {
         localStorage.setItem(
-          "favorites",
+          "favoriteItem",
           JSON.stringify([...favorites, action.item])
         );
         return [...favorites, action.item];
@@ -27,7 +27,7 @@ const ContextProvider = ({ children }) => {
           (item) => item.title !== action.item.title
         );
         console.log(favorites);
-        localStorage.setItem("favorites", JSON.stringify(favorites));
+        localStorage.setItem("favoriteItem", JSON.stringify(favorites));
         return favorites;
       }
     }
