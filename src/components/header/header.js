@@ -14,7 +14,7 @@ const Header = () => {
       <form onSubmit={handleSearchSubmit}>
         <label>
           <input
-            className="p-2 text-[rgb(2,2,2)] w-40 mr-0 md:mr-0 rounded-md"
+            className="p-2 text-[rgb(2,2,2)] w-40 mr-0 md:mr-0 focus:outline-none rounded-md"
             required
             value={value}
             onChange={(e) => setValue(e.target.value)}
