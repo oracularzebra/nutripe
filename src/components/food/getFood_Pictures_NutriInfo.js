@@ -71,4 +71,4 @@ const useGetFoodItem_Pictures_items = (name, id) => {
     return [item, pictures, ingredientList, nutriObj];
   };
 
-  export default getFoodItemAndGetPictures;
+  export default useGetFoodItem_Pictures_items;
