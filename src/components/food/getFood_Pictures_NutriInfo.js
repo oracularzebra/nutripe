@@ -1,3 +1,8 @@
+import { useState, useEffect } from "react";
+import getNutri from "../../apiRequest/getNutritionalInfo";
+import getPhoto from "../../apiRequest/getPhoto";
+import getRecipesFromApiNinjas from "../../apiRequest/getRecipes";
+
 const useGetFoodItem_Pictures_items = (name, id) => {
 
     const [item, setItem] = useState();
@@ -32,7 +37,7 @@ const useGetFoodItem_Pictures_items = (name, id) => {
           }
         );
         Promise.all(promises).then((list) => {
-          let tempNutriObj = Object.create(itemsObj);
+          let tempNutriObj = Object.create(nutriObj);
 
           for (let item of list) {
             console.log(item);
@@ -67,7 +72,7 @@ const useGetFoodItem_Pictures_items = (name, id) => {
 
         return itemArr[id];
       });
-    }, []);
+    }, [name, id]);
     return [item, pictures, ingredientList, nutriObj];
   };
 
