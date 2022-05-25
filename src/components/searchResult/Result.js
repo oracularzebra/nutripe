@@ -11,7 +11,7 @@ import Box from "@mui/material/Box";
 
 const Result = () => {
   const { setItem, handleFavoriteButton, favorites } = useContext(FoodContext);
-  const [recipe, setRecipe] = useState({});
+  const [recipe, setRecipe] = useState([]);
   const { name } = useParams();
   const [recipeLoaded, setRecipeLoaded] = useState(false);
   const [imagesLoaded, setImagesLoaded] = useState(false);
@@ -24,6 +24,7 @@ const Result = () => {
         await getRecipes(name).then(async (data) => {
           setRecipe(data);
           console.log(data);
+          console.log(data.length);
           setRecipeLoaded(true);
           const PromiseToGetImage = (query) => {
             return getPhoto(query);
@@ -45,14 +46,17 @@ const Result = () => {
       } catch (err) {
         console.log(err);
       }
+      console.log(imagesLoaded, recipeLoaded);
+      console.log(photos.length, recipe.length);
     };
     getRecipeData();
   }, [name]);
 
   return (
     <div className="grid grid-cols-1 gap-4 h-screen overflow-scroll md:grid-cols-5 justify-center bg-slate-200">
-      {recipeLoaded && imagesLoaded ? (
+      {recipeLoaded && imagesLoaded && recipe.length ? (
         recipe.map((item, index) => {
+          console.log("recipe loaded");
           return (
             <div
               className="grid items-stretch rounded-md border-2 border-blue-200"
@@ -72,17 +76,15 @@ const Result = () => {
                   }
                 }}
               >
-                {imagesLoaded && (
-                  <img
-                    className="h-96 object-cover rounded-md w-screen  md:h-40 lg:h-96"
-                    src={
-                      photos[index].photos[0]
-                        ? photos[index].photos[0].src.large
-                        : "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F9%2F2021%2F07%2F13%2FUltimate-Veggie-Burgers-FT-Recipe-0821.jpg"
-                    }
-                    alt={photos[index].photos.alt}
-                  />
-                )}
+                <img
+                  className="h-96 object-cover rounded-md w-screen  md:h-40 lg:h-96"
+                  src={
+                    photos[index].photos[0]
+                      ? photos[index].photos[0].src.large
+                      : "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F9%2F2021%2F07%2F13%2FUltimate-Veggie-Burgers-FT-Recipe-0821.jpg"
+                  }
+                  alt={photos[index].photos.alt}
+                />
                 <h5
                   className="text-center font-serif font-bold"
                   id="itemHeading"
@@ -116,7 +118,7 @@ const Result = () => {
             </div>
           );
         })
-      ) : !imagesLoaded || !recipeLoaded ? (
+      ) : recipe.length ? (
         <Box>
           <CircularProgress
             sx={{
@@ -130,7 +132,9 @@ const Result = () => {
           />
         </Box>
       ) : (
-        <p className="absolute m-auto font-bold">Please try something else</p>
+        <p className="relative top-0 bottom-0 m-auto font-bold">
+          Please try something else
+        </p>
       )}
     </div>
   );
