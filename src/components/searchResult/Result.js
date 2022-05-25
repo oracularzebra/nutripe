@@ -50,7 +50,7 @@ const Result = () => {
   }, [name]);
 
   return (
-    <div className="grid grid-cols-1 gap-4 h-screen overflow-scroll m-2 md:grid-cols-5 md:m-1 md:mt-0 justify-center bg-slate-200">
+    <div className="grid grid-cols-1 gap-4 h-screen overflow-scroll md:grid-cols-5 justify-center bg-slate-200">
       {recipeLoaded && imagesLoaded ? (
         recipe.map((item, index) => {
           return (

@@ -33,8 +33,8 @@ const Favorites = () => {
   }, [favorites]);
 
   return (
-    <div className="grid grid-cols-1 gap-4 h-screen overflow-scroll m-2 md:grid-cols-5 md:m-1 md:mt-0 justify-center bg-slate-200">
-      {imagesLoaded ? (
+    <div className="grid grid-cols-1 gap-4 h-screen overflow-scroll md:grid-cols-5 md:mt-0 justify-center bg-slate-200">
+      {imagesLoaded && favorites.length ? (
         favorites.map((item, index) => {
           return (
             <div
@@ -91,7 +91,7 @@ const Favorites = () => {
             </div>
           );
         })
-      ) : (
+      ) : favorites.length ?(
         <Box
           sx={{
             height: '100vh',
@@ -108,7 +108,9 @@ const Favorites = () => {
             }}
           />
         </Box>
-      )}
+      ):
+        <p className='left-0 right-0 top-0 bottom-0 m-auto relative font-bold'>Make some hearts <b className='text-[rgb(255,47,47)]'>red</b></p>
+      }
     </div>
   );
 };
