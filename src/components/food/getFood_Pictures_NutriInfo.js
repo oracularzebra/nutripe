@@ -80,7 +80,7 @@ const useGetFoodItem_Pictures_items = (name, id) => {
 
         return itemArr[id];
       });
-    }, [id, name, nutriObj]);
+    }, [id, name]);
     return [item, pictures, ingredientList, nutriObj, gotFood, picturesLoaded, nutrientInfoLoaded];
   };
 
