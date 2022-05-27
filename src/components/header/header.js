@@ -9,8 +9,8 @@ const Header = () => {
   const { handleSearchSubmit, value, setValue } = useContext(FoodContext);
   return (
     <div className="flex justify-between items-center bg-[#c8bbaa]">
-      <Link to="/" className="">
-        <img src={image} className='h-16 w-32 left-0 bottom-0 top-0 right-0 m-auto'/>
+      <Link to="/" className="h-[min-content] m-0 relative">
+        <img src={image} className='w-[160px] h-[160/3px] bg-cover m-0 object-cover left-0 top-0 absolte '/>
       </Link>
       <form onSubmit={handleSearchSubmit}>
         <label>
