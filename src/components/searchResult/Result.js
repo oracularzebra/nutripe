@@ -131,7 +131,7 @@ const Result = () => {
             }}
           />
         </Box>
-      ) : (
+      ) : ( recipeLoaded &&
         <p className="relative top-0 bottom-0 m-auto font-bold">
           Please try something else
         </p>
