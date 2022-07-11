@@ -109,7 +109,7 @@ const FavoriteItem = () => {
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
       }}
-      className="grid bg-repeat-round"
+      className="order-2 grid bg-repeat-round h-full"
     >
       <h2 className="text-center font-bold text-2xl m-4" id="foodTitle">
         {showItem.title}

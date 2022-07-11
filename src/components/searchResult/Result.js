@@ -53,7 +53,7 @@ const Result = () => {
   }, [name]);
 
   return (
-    <div className="grid grid-cols-1 gap-4 h-screen overflow-scroll md:grid-cols-5 justify-center bg-slate-200">
+    <div className="order-2 h-full grid grid-cols-1 gap-4 h-screen md:grid-cols-5 justify-center bg-slate-200">
       {recipeLoaded && imagesLoaded && recipe.length ? (
         recipe.map((item, index) => {
           console.log("recipe loaded");
@@ -132,7 +132,7 @@ const Result = () => {
           />
         </Box>
       ) : ( recipeLoaded &&
-        <p className="relative top-0 bottom-0 m-auto font-bold">
+        <p className="relative top-0 bottom-0 left-0 right-0 m-auto font-bold">
           Please try something else
         </p>
       )}

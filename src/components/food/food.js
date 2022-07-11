@@ -42,7 +42,7 @@ const Item = () => {
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
       }}
-      className="grid bg-repeat-round h-screen overflow-scroll"
+      className="order-2 grid bg-repeat-round h-full"
     >
       {gotFood && picturesLoaded ? (
         <div>

@@ -33,7 +33,7 @@ const Favorites = () => {
   }, [favorites]);
 
   return (
-    <div className="grid grid-cols-1 gap-4 h-screen overflow-scroll md:grid-cols-5 md:mt-0 justify-center bg-slate-200">
+    <div className="grid order-2 grid-cols-1 gap-4 h-full md:grid-cols-5 md:mt-0 justify-center bg-slate-200">
       {imagesLoaded && favorites.length ? (
         favorites.map((item, index) => {
           return (

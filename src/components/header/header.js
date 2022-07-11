@@ -8,7 +8,7 @@ const Header = () => {
   const ref = useRef(null);
   const { handleSearchSubmit, value, setValue } = useContext(FoodContext);
   return (
-    <div className="flex justify-between items-center bg-[#c8bbaa]">
+    <div className="order-1 flex justify-between items-center bg-[#c8bbaa]">
       <Link to="/" className="h-[min-content] m-0 relative">
         <img src={image} className='w-[160px] h-[160/3px] bg-cover m-0 object-cover left-0 top-0 absolte '/>
       </Link>
